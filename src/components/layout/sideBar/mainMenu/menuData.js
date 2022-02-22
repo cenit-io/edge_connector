@@ -4,7 +4,7 @@ import MailIcon from "@mui/icons-material/Mail";
 
 const menuData = [
   {
-    key: '/home',
+    key: '/',
     label: 'Home',
     icon: <HomeIcon />,
     link: '/'
