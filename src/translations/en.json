@@ -2,6 +2,10 @@
   "home": "Home",
   "icon.goes.here": "Icon goes here",
   "project.comment": "Project comment",
-  "switch.language": "Switch language",
-  "switch.theme": "Switch theme"
+  "switch.language": "Switch language to {language}",
+  "switch.theme": "Switch theme to {theme}",
+  "light": "light",
+  "dark": "dark",
+  "english": "English",
+  "spanish": "Spanish"
 }

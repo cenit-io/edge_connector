@@ -2,6 +2,10 @@
   "home": "Inicio",
   "icon.goes.here": "Aquí va el ícono",
   "project.comment": "Comentario del proyecto",
-  "switch.language": "Cambiar idioma",
-  "switch.theme": "Cambiar tema"
+  "switch.language": "Cambiar idioma a {language}",
+  "switch.theme": "Cambiar tema a {theme}",
+  "light": "claro",
+  "dark": "oscuro",
+  "english": "Inglés",
+  "spanish": "Español"
 }

@@ -24,7 +24,8 @@ const UserMenu = () => {
   };
 
   const handleTheme = () => {
-    setMainConfig({ ...config, theme: config.theme === 'light' ? 'dark' : 'light '});
+    debugger;
+    setMainConfig({ ...config, theme: config.theme === 'light' ? 'dark' : 'light' });
     handleClose();
   };
 
@@ -57,8 +58,16 @@ const UserMenu = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleLanguage}><FormattedMessage id="switch.language" /></MenuItem>
-          <MenuItem onClick={handleTheme}><FormattedMessage id="switch.theme" /></MenuItem>
+          <MenuItem onClick={handleLanguage}>
+            <FormattedMessage id="switch.language" values={
+              { language: <FormattedMessage id={config.locale === 'en' ? 'spanish' : 'english'} /> }
+            } />
+          </MenuItem>
+          <MenuItem onClick={handleTheme}>
+            <FormattedMessage id="switch.theme" values={
+              { theme: <FormattedMessage id={config.theme === 'light' ? 'dark' : 'light'} /> }
+            } />
+          </MenuItem>
         </Menu>
       )}
     </>
