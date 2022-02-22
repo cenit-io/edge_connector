@@ -5,16 +5,34 @@ import config from "./config/config";
 import Application from "./containers/application/Application";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { IntlProvider } from "react-intl";
 
 const theme = createTheme();
+const messageLoader = {
+  en: () => import("./translations/en.json"),
+  es: () => import("./translations/es.json")
+}
 
 function App() {
   const [mainConfig, setMainConfig] = useState(config);
+  const [messages, setMessages] = useState(null);
+
   const matches = useMediaQuery('(min-width:600px)');
+  const { locale } = mainConfig;
+
+  useEffect(() => {
+    messageLoader[locale]().then(messages => {
+      setMessages(messages);
+    });
+  }, [locale]);
 
   useEffect(() => {
     setMainConfig({ ...mainConfig, wideDevice: matches });
   }, [matches]);
+
+  if (!messages) {
+    return "Loading...";
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -23,7 +41,9 @@ function App() {
         isRtl: mainConfig?.rtl,
         setMainConfig
       }}>
-        <Application />
+        <IntlProvider locale={locale} messages={messages}>
+          <Application />
+        </IntlProvider>
       </GlobalContext.Provider>
     </ThemeProvider>
   );

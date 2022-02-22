@@ -14,7 +14,7 @@ const SideBar = ({ handleDrawerToggle, openDrawer }) => {
     <Drawer
       anchor={isRtl ? 'left' : 'right'}
       open={openDrawer}
-      variant={isWideDevice ? (openDrawer ? 'permanent' : 'temporary') : 'temporary'}
+      variant={isWideDevice ? 'persistent' : 'temporary'}
       onClose={handleDrawerToggle}
       ModalProps={isWideDevice ? { keepMounted: true } : undefined}
       sx={{
