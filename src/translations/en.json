@@ -1,5 +1,7 @@
 {
   "home": "Home",
   "icon.goes.here": "Icon goes here",
-  "project.comment": "Project comment"
+  "project.comment": "Project comment",
+  "switch.language": "Switch language",
+  "switch.theme": "Switch theme"
 }

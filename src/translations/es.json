@@ -1,5 +1,7 @@
 {
   "home": "Inicio",
   "icon.goes.here": "Aquí va el ícono",
-  "project.comment": "Comentario del proyecto"
+  "project.comment": "Comentario del proyecto",
+  "switch.language": "Cambiar idioma",
+  "switch.theme": "Cambiar tema"
 }

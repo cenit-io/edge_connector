@@ -40,6 +40,9 @@ function App() {
       <GlobalContext.Provider value={{
         isWideDevice: mainConfig?.wideDevice,
         isRtl: mainConfig?.rtl,
+        locale: mainConfig?.locale,
+        theme: mainConfig?.theme,
+        config: mainConfig,
         setMainConfig
       }}>
         <IntlProvider locale={locale} messages={messages}>
