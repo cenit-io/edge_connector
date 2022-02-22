@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
+import GlobalContext from "./config/GlobalContext";
+import config from "./config/config";
+import Application from "./containers/application/Application";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme();
 
 function App() {
+  const [mainConfig, setMainConfig] = useState(config);
+  const matches = useMediaQuery('(min-width:600px)');
+
+  useEffect(() => {
+    setMainConfig({ ...mainConfig, wideDevice: matches });
+  }, [matches]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalContext.Provider value={{
+        isWideDevice: mainConfig?.wideDevice,
+        isRtl: mainConfig?.rtl,
+        setMainConfig
+      }}>
+        <Application />
+      </GlobalContext.Provider>
+    </ThemeProvider>
   );
 }
 
