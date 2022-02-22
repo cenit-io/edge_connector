@@ -21,9 +21,10 @@ function App() {
   const { locale } = mainConfig;
 
   useEffect(() => {
-    messageLoader[locale]().then(messages => {
-      setMessages(messages);
-    });
+    messageLoader[locale]()
+      .then(msgData => {
+        setMessages(msgData);
+      });
   }, [locale]);
 
   useEffect(() => {
