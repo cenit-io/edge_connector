@@ -91,8 +91,6 @@ const MainMenu = () => {
 
   const { pathname } = useLocation();
 
-  console.log(expand, selected);
-
   useEffect(() => {
     if (pathname) {
       if (pathname.split('/').length > 1) {
