@@ -1,14 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { drawerWidth } from "../../../config/config";
+import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
+import { drawerWidth } from "../../../config/config";
+import UserMenu from "./userMenu/UserMenu";
 
 const Header = ({ includeUserMenu, handleDrawerToggle, openDrawer }) => {
   return (
@@ -33,6 +34,7 @@ const Header = ({ includeUserMenu, handleDrawerToggle, openDrawer }) => {
         <Typography variant="h6" noWrap component="div">
           <FormattedMessage id="project.comment" />
         </Typography>
+        <UserMenu />
       </Toolbar>
     </AppBar>
   );
