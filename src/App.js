@@ -7,7 +7,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { IntlProvider } from "react-intl";
 
-const theme = createTheme();
 const messageLoader = {
   en: () => import("./translations/en.json"),
   es: () => import("./translations/es.json")
@@ -19,6 +18,12 @@ function App() {
 
   const matches = useMediaQuery('(min-width:600px)');
   const { locale } = mainConfig;
+
+  const theme = createTheme({
+    palette: {
+      mode: mainConfig.theme
+    }
+  });
 
   useEffect(() => {
     messageLoader[locale]()

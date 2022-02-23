@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
+import Toolbar from "@mui/material/Toolbar";
 import { drawerWidth } from '../../config/config';
 import GlobalContext from '../../config/GlobalContext';
 import SideBar from './sideBar/SideBar';
@@ -35,7 +36,6 @@ const MainLayout = ({ children }) => {
       <Box
         component="main"
         sx={{
-          mt: '64px',
           flexGrow: 1,
           p: 3,
           transition: theme.transitions.create("margin", {
@@ -51,6 +51,7 @@ const MainLayout = ({ children }) => {
             marginLeft: 0
           })
         }}>
+        <Toolbar />
         {children}
       </Box>
     </Box>
