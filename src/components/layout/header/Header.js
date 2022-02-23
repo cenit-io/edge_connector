@@ -11,12 +11,14 @@ import { FormattedMessage } from "react-intl";
 import { drawerWidth } from "../../../config/config";
 import UserMenu from "./userMenu/UserMenu";
 
-const Header = ({ includeUserMenu, handleDrawerToggle, openDrawer }) => {
+const Header = ({ 
+  includeUserMenu, isWideDevice, handleDrawerToggle, openDrawer 
+}) => {
   return (
     <AppBar position="fixed" sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}>
       <Toolbar>
-        {openDrawer && (
-          <Box sx={{ width: `${drawerWidth - 32}px` }}>
+        {isWideDevice && openDrawer && (
+          <Box sx={{ width: theme => `calc(${drawerWidth}px - ${theme.spacing(4)})` }}>
             <Typography>
               <FormattedMessage id="icon.goes.here" />
             </Typography>
@@ -47,7 +49,8 @@ Header.defaultProps = {
 Header.propTypes = {
   handleDrawerToggle: PropTypes.func.isRequired,
   openDrawer: PropTypes.bool.isRequired,
-  includeUserMenu: PropTypes.bool
-}
+  isWideDevice: PropTypes.bool.isRequired,
+  includeUserMenu: PropTypes.bool  
+};
 
 export default Header;

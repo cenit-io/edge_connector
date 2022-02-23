@@ -8,12 +8,10 @@ import { drawerWidth } from '../../config/config';
 import GlobalContext from '../../config/GlobalContext';
 import SideBar from './sideBar/SideBar';
 import Header from './header/Header';
-import { useTheme } from "@mui/material";
 
 const MainLayout = ({ children }) => {
   const [openDrawer, setOpenDrawer] = useState(true);
   const { isWideDevice } = useContext(GlobalContext);
-  const theme = useTheme();
 
   const handleDrawerToggle = () => {
     setOpenDrawer(!openDrawer);
@@ -31,25 +29,29 @@ const MainLayout = ({ children }) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <Header handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} />
+      <Header handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} isWideDevice={isWideDevice} />
       <SideBar handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} />
       <Box
         component="main"
-        sx={{
+        sx={isWideDevice ? {
           flexGrow: 1,
           p: 3,
-          transition: theme.transitions.create("margin", {
+          transition: theme => theme.transitions.create("margin", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen
           }),
           marginLeft: `-${drawerWidth}px`,
           ...(openDrawer && {
-            transition: theme.transitions.create("margin", {
+            transition: theme => theme.transitions.create("margin", {
               easing: theme.transitions.easing.easeOut,
               duration: theme.transitions.duration.enteringScreen
             }),
             marginLeft: 0
           })
+        } : {
+          flexGrow: 1,
+          p: 3,
+          width: `${drawerWidth}px`
         }}>
         <Toolbar />
         {children}
