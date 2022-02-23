@@ -7,5 +7,8 @@
   "light": "light",
   "dark": "dark",
   "english": "English",
-  "spanish": "Spanish"
+  "spanish": "Spanish",
+  "example": "Example",
+  "example.text": "This is just an example test to demostrate the intl capabilities.",
+  "example.text1": "Here you can see two ways for using the intl."
 }

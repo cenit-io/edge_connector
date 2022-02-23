@@ -65,7 +65,7 @@ const UserMenu = () => {
           </MenuItem>
           <MenuItem onClick={handleTheme}>
             <FormattedMessage id="switch.theme" values={
-              { theme: <FormattedMessage id={config.theme === themes.light ? 'light' : 'dark'} /> }
+              { theme: <FormattedMessage id={config.theme === themes.light ? 'dark' : 'light'} /> }
             } />
           </MenuItem>
         </Menu>

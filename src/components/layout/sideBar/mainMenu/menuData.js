@@ -1,6 +1,7 @@
 import HomeIcon from "@mui/icons-material/Home";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import TranslateIcon from "@mui/icons-material/Translate";
 
 const menuData = [
   {
@@ -8,6 +9,12 @@ const menuData = [
     label: 'Home',
     icon: <HomeIcon />,
     link: '/'
+  },
+  {
+    key: '/example',
+    label: 'Example',
+    icon: <TranslateIcon />,
+    link: '/example'
   },
   {
     divider: true
