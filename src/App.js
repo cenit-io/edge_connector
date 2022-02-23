@@ -22,6 +22,15 @@ function App() {
   const theme = createTheme({
     palette: {
       mode: mainConfig.theme
+    },
+    components: {
+      MuiToolbar: {
+        styleOverrides: {
+          root: {
+            minHeight: "50px !important"
+          }
+        }
+      }
     }
   });
 
