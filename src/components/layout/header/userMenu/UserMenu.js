@@ -4,6 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import GlobalContext from "../../../../config/GlobalContext";
+import { themes } from "../../../../config/config";
 import { FormattedMessage } from "react-intl";
 
 const UserMenu = () => {
@@ -24,8 +25,7 @@ const UserMenu = () => {
   };
 
   const handleTheme = () => {
-    debugger;
-    setMainConfig({ ...config, theme: config.theme === 'light' ? 'dark' : 'light' });
+    setMainConfig({ ...config, theme: config.theme === themes.light ? themes.dark : themes.light });
     handleClose();
   };
 
@@ -65,7 +65,7 @@ const UserMenu = () => {
           </MenuItem>
           <MenuItem onClick={handleTheme}>
             <FormattedMessage id="switch.theme" values={
-              { theme: <FormattedMessage id={config.theme === 'light' ? 'dark' : 'light'} /> }
+              { theme: <FormattedMessage id={config.theme === themes.light ? 'light' : 'dark'} /> }
             } />
           </MenuItem>
         </Menu>
