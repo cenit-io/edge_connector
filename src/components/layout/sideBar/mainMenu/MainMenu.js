@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Avatar from "@mui/material/Avatar";
 import Icon from "@mui/material/Icon";
 import Divider from "@mui/material/Divider";
@@ -15,7 +16,7 @@ import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import menuData from "./menuData";
 
-const MainMenu = () => {
+const MainMenu = ({dense}) => {
   const [expand, setExpand] = useState('');
   const [selected, setSelected] = useState('');
 
@@ -45,7 +46,7 @@ const MainMenu = () => {
     );
   }, []);
 
-  const handlePadding = useCallback(level => ({ pl: `${(level * 20 + 16)}px` }), []);
+  const handlePadding = useCallback(level => ({ pl: theme => `calc(calc(${level} * ${theme.spacing(4)}) + ${theme.spacing(3)})` }), []);
 
   const renderItem = useCallback((item, level) => {
     const { key } = item;
@@ -76,7 +77,7 @@ const MainMenu = () => {
           {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+          <List component="div" disablePadding dense={dense}>
             {item.children.map(child => {
               if (!child.children) {
                 return renderItem(child, level + 1);
@@ -101,7 +102,7 @@ const MainMenu = () => {
   }, []);
 
   return (
-    <List>
+    <List dense={dense}>
       {menuData.map(item => {
         if (item.divider) {
           return <Divider />
@@ -113,5 +114,13 @@ const MainMenu = () => {
     </List>
   );
 }
+
+MainMenu.defaultProps = {
+  dense: true
+};
+
+MainMenu.propTypes = {
+  dense: PropTypes.bool
+};
 
 export default MainMenu;
