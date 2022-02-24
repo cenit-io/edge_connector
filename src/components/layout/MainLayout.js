@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from "@mui/material/Toolbar";
+import Paper from '@mui/material/Paper';
 import { drawerWidth } from '../../config/config';
 import GlobalContext from '../../config/GlobalContext';
 import SideBar from './sideBar/SideBar';
@@ -35,7 +36,7 @@ const MainLayout = ({ children }) => {
         component="main"
         sx={isWideDevice ? {
           flexGrow: 1,
-          p: 3,
+          p: 2,
           transition: theme => theme.transitions.create("margin", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen
@@ -54,7 +55,9 @@ const MainLayout = ({ children }) => {
           width: `${drawerWidth}px`
         }}>
         <Toolbar />
+        <Paper elevation={2} sx={{ p: 2 }}>
         {children}
+        </Paper>
       </Box>
     </Box>
   );
