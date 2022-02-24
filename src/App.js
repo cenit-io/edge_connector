@@ -6,6 +6,7 @@ import Application from "./containers/application/Application";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { IntlProvider } from "react-intl";
+import getTheme from "./assets/themeHelper";
 
 const messageLoader = {
   en: () => import("./translations/en.json"),
@@ -17,22 +18,9 @@ function App() {
   const [messages, setMessages] = useState(null);
 
   const matches = useMediaQuery('(min-width:600px)');
-  const { locale } = mainConfig;
+  const { locale, theme } = mainConfig;
 
-  const theme = createTheme({
-    palette: {
-      mode: mainConfig.theme
-    },
-    components: {
-      MuiToolbar: {
-        styleOverrides: {
-          root: {
-            minHeight: "50px !important"
-          }
-        }
-      }
-    }
-  });
+  const mainTheme = createTheme(getTheme(theme));
 
   useEffect(() => {
     messageLoader[locale]()
@@ -50,7 +38,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={mainTheme}>
       <GlobalContext.Provider value={{
         isWideDevice: mainConfig?.wideDevice,
         isRtl: mainConfig?.rtl,
