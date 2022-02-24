@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import { Helmet } from 'react-helmet';
 import { name, description } from '../../config/projectConfig';
 import { FormattedMessage, useIntl } from 'react-intl';
+import Content from '../content/Content';
 
 const Home = () => {
   const intl = useIntl();
@@ -19,6 +20,7 @@ const Home = () => {
       </Helmet>
       <Typography variant="h5"><FormattedMessage id="example.text" /></Typography>
       <Typography><FormattedMessage id="example.text1" /></Typography>
+      <Content />
     </>
   );
 }

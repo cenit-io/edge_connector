@@ -2,7 +2,7 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import { Helmet } from 'react-helmet';
 import { name, description } from '../../config/projectConfig';
-import Content from '../content/Content';
+import HomeDashboard from './HomeDashboard';
 
 const Home = () => {
   const title = `${name} - Home`;
@@ -17,7 +17,7 @@ const Home = () => {
         <meta property="twitter:description" content={description} />
       </Helmet>
       <Typography variant="h3">Home</Typography>
-      <Content />
+      <HomeDashboard />
     </>
   );
 }
