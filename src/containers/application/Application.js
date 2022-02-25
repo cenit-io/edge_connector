@@ -1,23 +1,21 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../../components/layout/MainLayout";
 import Loading from "../../components/loading/Loading";
-import { lazy } from "@loadable/component";
+import loadable from "@loadable/component";
 
-const HomeAsync = lazy(() => import('../home/Home'));
-const NotFoundAsync = lazy(() => import('../notFound/NotFound'));
-const ExampleAsync = lazy(() => import('../example/Example'));
+const HomeAsync = loadable(() => import('../home/Home'), { fallback: <Loading /> });
+const NotFoundAsync = loadable(() => import('../notFound/NotFound'), { fallback: <Loading /> });
+const ExampleAsync = loadable(() => import('../example/Example'), { fallback: <Loading /> });
 
 const Application = () => {
   return (
     <MainLayout>
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          <Route index element={<HomeAsync />} />
-          <Route path="/example" element={<ExampleAsync />} />
-          <Route path="*" element={<NotFoundAsync />} />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route index element={<HomeAsync />} />
+        <Route path="/example" element={<ExampleAsync />} />
+        <Route path="*" element={<NotFoundAsync />} />
+      </Routes>
     </MainLayout>
   );
 }
