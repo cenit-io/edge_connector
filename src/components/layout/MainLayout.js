@@ -9,6 +9,7 @@ import { drawerWidth } from '../../config/config';
 import GlobalContext from '../../config/GlobalContext';
 import SideBar from './sideBar/SideBar';
 import Header from './header/Header';
+import Footer from './footer/Footer';
 
 const MainLayout = ({ children }) => {
   const [openDrawer, setOpenDrawer] = useState(true);
@@ -35,6 +36,9 @@ const MainLayout = ({ children }) => {
       <Box
         component="main"
         sx={isWideDevice ? {
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
           flexGrow: 1,
           p: 2,
           transition: theme => theme.transitions.create("margin", {
@@ -56,8 +60,9 @@ const MainLayout = ({ children }) => {
         }}>
         <Toolbar />
         <Paper elevation={2} sx={{ p: 2 }}>
-        {children}
+          {children}
         </Paper>
+        <Footer />
       </Box>
     </Box>
   );
