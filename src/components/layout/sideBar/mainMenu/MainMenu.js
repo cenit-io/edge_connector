@@ -35,7 +35,7 @@ const MainMenu = ({dense}) => {
           alt={src}
           src={src}
           variant="rounded"
-          sx={{ mt: '-7px', mr: '-20px', h: '24px', w: '24px' }}
+          sx={{ mt: '-7px', mr: '-20px', height: '24px', width: '24px' }}
         />
       </ListItemAvatar>
     }
