@@ -36,4 +36,4 @@ SideBar.propTypes = {
   openDrawer: PropTypes.bool.isRequired
 }
 
-export default SideBar;
+export default React.memo(SideBar, (current, next) => current.openDrawer === next.openDrawer);

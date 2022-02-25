@@ -123,4 +123,4 @@ MainMenu.propTypes = {
   dense: PropTypes.bool
 };
 
-export default MainMenu;
+export default React.memo(MainMenu, (current, next) => current.dense === next.dense);
