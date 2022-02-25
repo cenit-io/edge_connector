@@ -12,7 +12,7 @@ import { drawerWidth } from "../../../config/config";
 import UserMenu from "./userMenu/UserMenu";
 
 const Header = ({ 
-  includeUserMenu, isWideDevice, handleDrawerToggle, openDrawer 
+  isWideDevice, handleDrawerToggle, openDrawer 
 }) => {
   return (
     <AppBar position="fixed" sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}>
@@ -42,15 +42,14 @@ const Header = ({
   );
 }
 
-Header.defaultProps = {
-  includeUserMenu: true
-};
-
 Header.propTypes = {
   handleDrawerToggle: PropTypes.func.isRequired,
   openDrawer: PropTypes.bool.isRequired,
-  isWideDevice: PropTypes.bool.isRequired,
-  includeUserMenu: PropTypes.bool  
+  isWideDevice: PropTypes.bool.isRequired
 };
 
-export default Header;
+const notRenderIf = (current, next) => (
+  current.openDrawer === next.openDrawer && current.isWideDevice === next.isWideDevice
+);
+
+export default React.memo(Header, notRenderIf);

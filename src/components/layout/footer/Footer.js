@@ -33,4 +33,4 @@ Footer.propTypes = {
   showDivider: PropTypes.bool
 };
 
-export default Footer;
+export default React.memo(Footer);
