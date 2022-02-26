@@ -11,36 +11,34 @@ import { FormattedMessage } from "react-intl";
 import { drawerWidth } from "../../../config/config";
 import UserMenu from "./userMenu/UserMenu";
 
-const Header = ({ 
-  isWideDevice, handleDrawerToggle, openDrawer 
-}) => {
-  return (
-    <AppBar position="fixed" sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}>
-      <Toolbar>
-        {isWideDevice && openDrawer && (
-          <Box sx={{ width: theme => `calc(${drawerWidth}px - ${theme.spacing(4)})` }}>
-            <Typography>
-              <FormattedMessage id="icon.goes.here" />
-            </Typography>
-          </Box>
-        )}
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleDrawerToggle}
-          sx={{ mr: 2 }}
-        >
-          {openDrawer ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-        </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          <FormattedMessage id="project.comment" />
-        </Typography>
-        <UserMenu />
-      </Toolbar>
-    </AppBar>
-  );
-}
+const Header = ({
+  isWideDevice, handleDrawerToggle, openDrawer
+}) => (
+  <AppBar position="fixed" sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}>
+    <Toolbar>
+      {isWideDevice && openDrawer && (
+        <Box sx={{ width: theme => `calc(${drawerWidth}px - ${theme.spacing(4)})` }}>
+          <Typography>
+            <FormattedMessage id="icon.goes.here" />
+          </Typography>
+        </Box>
+      )}
+      <IconButton
+        color="inherit"
+        aria-label="open drawer"
+        edge="start"
+        onClick={handleDrawerToggle}
+        sx={{ mr: 2 }}
+      >
+        {openDrawer ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+      </IconButton>
+      <Typography variant="h6" noWrap component="div">
+        <FormattedMessage id="project.comment" />
+      </Typography>
+      <UserMenu />
+    </Toolbar>
+  </AppBar>
+);
 
 Header.propTypes = {
   handleDrawerToggle: PropTypes.func.isRequired,
