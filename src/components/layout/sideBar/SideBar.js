@@ -8,11 +8,11 @@ import GlobalContext from "../../../config/GlobalContext";
 import { drawerWidth } from "../../../config/config";
 
 const SideBar = ({ handleDrawerToggle, openDrawer }) => {
-  const { isRtl, isWideDevice } = useContext(GlobalContext);
+  const { isWideDevice } = useContext(GlobalContext);
 
   return (
     <Drawer
-      anchor={isRtl ? 'left' : 'right'}
+      anchor="left"
       open={openDrawer}
       variant={isWideDevice ? 'persistent' : 'temporary'}
       onClose={handleDrawerToggle}

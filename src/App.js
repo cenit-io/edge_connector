@@ -41,7 +41,6 @@ function App() {
     <ThemeProvider theme={mainTheme}>
       <GlobalContext.Provider value={{
         isWideDevice: mainConfig?.wideDevice,
-        isRtl: mainConfig?.rtl,
         locale: mainConfig?.locale,
         theme: mainConfig?.theme,
         config: mainConfig,

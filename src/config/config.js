@@ -6,8 +6,7 @@ export const themes = { light: 'light', dark: 'dark' };
 const config = {
   wideDevice: true,
   locale: languages[0],
-  theme: themes.light,
-  rtl: true
+  theme: themes.light
 };
 
 export default config;
