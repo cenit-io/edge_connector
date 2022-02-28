@@ -8,7 +8,7 @@ import { drawerWidth } from "../../../config/config";
 
 const SideBar = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
   <Drawer
-    anchor="right"
+    anchor="left"
     open={openDrawer}
     variant={isWideDevice ? 'persistent' : 'temporary'}
     onClose={handleDrawerToggle}
