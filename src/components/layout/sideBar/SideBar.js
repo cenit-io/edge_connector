@@ -8,11 +8,10 @@ import { drawerWidth } from "../../../config/config";
 
 const SideBar = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
   <Drawer
-    anchor="left"
+    anchor="right"
     open={openDrawer}
     variant={isWideDevice ? 'persistent' : 'temporary'}
     onClose={handleDrawerToggle}
-    PaperProps={{ style: { left: 0, right: 'unset' } }}
     ModalProps={isWideDevice ? { keepMounted: true } : undefined}
     sx={{
       width: drawerWidth,
