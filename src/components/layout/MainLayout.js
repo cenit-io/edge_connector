@@ -32,7 +32,7 @@ const MainLayout = ({ children }) => {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <Header handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} isWideDevice={isWideDevice} />
-      <SideBar handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} />
+      <SideBar handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} isWideDevice={isWideDevice} />
       <Box
         component="main"
         sx={isWideDevice ? {
