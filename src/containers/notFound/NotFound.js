@@ -1,11 +1,16 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import Icon from "@mui/material/Icon";
+import DoNotTouchIcon from '@mui/icons-material/DoNotTouch';
+import { useIntl } from "react-intl";
 import { Helmet } from "react-helmet";
 import { name, description } from "../../config/projectConfig";
 
 const NotFound = () => {
-  const title = `${name} - Page not found`;
+  const intl = useIntl();
+  const title = `${name} - ${intl.formatMessage({ id: "page.not.found" })}`;
 
   return (
     <>
@@ -17,21 +22,29 @@ const NotFound = () => {
         <meta property="twitter:title" content={name} />
         <meta property="twitter:description" content={description} />
       </Helmet>
-      <div sx={{
-        position: 'absolute',
-        left: '50%',
-        top: '50%',
-        transform: 'translate(-50%, -50%)'
+      <Box sx={{
+        height: 'calc(100vh - 150px)',
+        width: '100%'
       }}>
-        <Typography sx={{ fontWeight: 'bold' }} variant="h3">
-          Error 404: The requested URL is not available
-        </Typography>
-        <Typography>
-          <Link href="/" underline="none" rel="noopener">
-            Go back to Home.
-          </Link>
-        </Typography>
-      </div>
+        <Box sx={{
+          position: 'relative',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)'
+        }}>
+          <Icon fontSize="large">
+            <DoNotTouchIcon fontSize="large" />
+          </Icon>
+          <Typography sx={{ fontWeight: 'bold' }} variant="h5">
+            {intl.formatMessage({ id: 'page.not.found.error' })}
+          </Typography>
+          <Typography>
+            <Link href="/" underline="none" rel="noopener">
+              {intl.formatMessage({ id: 'go.back.home' })}
+            </Link>
+          </Typography>
+        </Box>
+      </Box>
     </>
   );
 }

@@ -12,13 +12,15 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { NavLink } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import menuData from "./menuData";
+import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useIntl } from "react-intl";
+import getMenuData from "./menuData";
 
 const MainMenu = ({dense}) => {
   const [expand, setExpand] = useState('');
   const [selected, setSelected] = useState('');
+  const intl = useIntl();
 
   const handleExpand = value => () => {
     setExpand(value === expand ? '' : value);
@@ -100,6 +102,8 @@ const MainMenu = ({dense}) => {
       setSelected(pathname);
     }
   }, []);
+
+  const menuData = getMenuData(intl);
 
   return (
     <List dense={dense}>
