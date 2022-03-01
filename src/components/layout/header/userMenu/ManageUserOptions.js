@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Drawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { drawerWidth } from "../../../../config/config";
 
 const ManageUserOptions = ({ open, handleClose }) => (
   <Drawer
@@ -13,7 +14,7 @@ const ManageUserOptions = ({ open, handleClose }) => (
       zIndex: theme => theme.zIndex.drawer + 2
     }}
   >
-    <Box>
+    <Box sx={{ width: `${drawerWidth}px`, p: 2 }}>
       <Typography>
         Some user options here...
       </Typography>

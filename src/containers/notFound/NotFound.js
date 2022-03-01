@@ -1,10 +1,12 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import { Helmet } from 'react-helmet';
-import { name, description } from '../../config/projectConfig';
+import Link from "@mui/material/Link";
+import { Helmet } from "react-helmet";
+import { name, description } from "../../config/projectConfig";
 
 const NotFound = () => {
-  const title = `${name} - Page not found`;  
+  const title = `${name} - Page not found`;
+
   return (
     <>
       <Helmet>
@@ -25,7 +27,9 @@ const NotFound = () => {
           Error 404: The requested URL is not available
         </Typography>
         <Typography>
-          Go back to Home.
+          <Link href="/" underline="none" rel="noopener">
+            Go back to Home.
+          </Link>
         </Typography>
       </div>
     </>
