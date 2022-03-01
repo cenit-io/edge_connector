@@ -3,16 +3,16 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import TranslateIcon from "@mui/icons-material/Translate";
 
-const menuData = [
+const getMenuData = intl => [
   {
     key: '/',
-    label: 'Home',
+    label: intl.formatMessage({ id: 'home' }),
     icon: <HomeIcon />,
     link: '/'
   },
   {
     key: '/example',
-    label: 'Example',
+    label: intl.formatMessage({ id: 'example' }),
     icon: <TranslateIcon />,
     link: '/example'
   },
@@ -21,7 +21,7 @@ const menuData = [
   },
   {
     key: '/item',
-    label: 'Item',
+    label: `${intl.formatMessage({ id: 'item' })} 1`,
     icon: <InboxIcon />,
     children: [
       {
@@ -34,7 +34,7 @@ const menuData = [
   },
   {
     key: '/item2',
-    label: 'Item2',
+    label: `${intl.formatMessage({ id: 'item' })} 2`,
     icon: <InboxIcon />,
     children: [
       {
@@ -47,4 +47,4 @@ const menuData = [
   }
 ];
 
-export default menuData;
+export default getMenuData;

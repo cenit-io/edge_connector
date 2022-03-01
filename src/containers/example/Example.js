@@ -18,8 +18,8 @@ const Home = () => {
         <meta property="twitter:title" content={name} />
         <meta property="twitter:description" content={description} />
       </Helmet>
-      <Typography variant="h5"><FormattedMessage id="example.text" /></Typography>
-      <Typography><FormattedMessage id="example.text1" /></Typography>
+      <Typography variant="h5"><FormattedMessage id="message" /></Typography>
+      <Typography><FormattedMessage id="message.body" /></Typography>
       <Content />
     </>
   );

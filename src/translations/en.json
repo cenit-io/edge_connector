@@ -9,7 +9,11 @@
   "english": "English",
   "spanish": "Spanish",
   "example": "Example",
-  "example.text": "This is just an example test to demostrate the intl capabilities.",
-  "example.text1": "Here you can see two ways for using the intl.",
-  "manage.user.options": "User options"
+  "item": "Item",
+  "message": "This is just a message.",
+  "message.body": "This is just a message body.",
+  "manage.user.options": "User options",
+  "page.not.found": "Page not found",
+  "page.not.found.error": "Error 404: The requested URL was not found or is not available",
+  "go.back.home": "Go back to home"
 }
