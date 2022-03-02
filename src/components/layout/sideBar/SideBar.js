@@ -27,7 +27,7 @@ const SideBar = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
       flexDirection: 'column',
       minHeight: 'calc(100vh - 50px)'
     }}>
-      <MainMenu />
+      <MainMenu dense={isWideDevice} />
       <MainMenuFooter />
     </Box>
   </Drawer>
