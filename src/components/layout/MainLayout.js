@@ -9,7 +9,6 @@ import { drawerWidth } from '../../config/config';
 import GlobalContext from '../../config/GlobalContext';
 import SideBar from './sideBar/SideBar';
 import Header from './header/Header';
-import Footer from './footer/Footer';
 
 const MainLayout = ({ children }) => {
   const [openDrawer, setOpenDrawer] = useState(true);
@@ -62,7 +61,6 @@ const MainLayout = ({ children }) => {
         <Paper elevation={2} sx={{ p: 2 }}>
           {children}
         </Paper>
-        <Footer />
       </Box>
     </Box>
   );
