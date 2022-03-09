@@ -1,2 +1,2 @@
-export const name = 'Project name';
+export const name = 'Edge Conector';
 export const description = 'Project description';

@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
@@ -10,15 +12,20 @@ import Divider from "@mui/material/Divider";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
 import GlobalContext from "../../../../config/GlobalContext";
-import { themes } from "../../../../config/config";
 import { FormattedMessage } from "react-intl";
+import Box from '@mui/material/Box';
+import { themes } from "../../../../config/config";
 import ManageUserOptions from "./ManageUserOptions";
+import { useAuth } from '../../../../utils/auth';
 
 const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [showUserOptions, setShowUserOptions] = useState(null);
   const { config, setMainConfig } = useContext(GlobalContext);
+
+  const auth = useAuth();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,7 +53,8 @@ const UserMenu = () => {
   const isLight = config.theme === themes.light;
 
   return (
-    <>
+    <Box sx={{ position: 'absolute', right: '10px', display: 'flex', alignItems: 'center' }}>
+      <Typography sx={{display: { md: 'block', xs: 'none' } }}>{auth.authInfo?.name}</Typography>
       <IconButton
         size="large"
         aria-label="account of current user"
@@ -54,7 +62,6 @@ const UserMenu = () => {
         aria-haspopup="true"
         onClick={handleMenu}
         color="inherit"
-        sx={{ position: 'absolute', right: '10px' }}
       >
         <AccountCircle />
       </IconButton>
@@ -94,7 +101,7 @@ const UserMenu = () => {
               } />
             </ListItemText>
           </MenuItem>
-          <Divider/>
+          <Divider />
           <MenuItem onClick={handleUserOptions}>
             <ListItemIcon>
               <ManageAccountsIcon />
@@ -103,10 +110,29 @@ const UserMenu = () => {
               <FormattedMessage id="manage.user.options" />
             </ListItemText>
           </MenuItem>
+          {auth.authInfo ? (
+            <MenuItem onClick={() => auth.signOut()}>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText>
+                <FormattedMessage id="components.layout.header.userMenu.logout" />
+              </ListItemText>
+            </MenuItem>
+          ) : (
+            <MenuItem onClick={() => auth.signIn()}>
+              <ListItemIcon>
+                <LoginIcon />
+              </ListItemIcon>
+              <ListItemText>
+                <FormattedMessage id="components.layout.header.userMenu.login" />
+              </ListItemText>
+            </MenuItem>
+          )}
         </Menu>
       )}
       <ManageUserOptions open={showUserOptions} handleClose={handleUserOptions} />
-    </>
+    </Box>
   );
 };
 

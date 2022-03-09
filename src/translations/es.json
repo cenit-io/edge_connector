@@ -15,5 +15,7 @@
   "manage.user.options": "Opciones del usuario",
   "page.not.found": "Página no encontrada",
   "page.not.found.error": "Error 404: La URL solicitada no se encuentra o no está disponible",
-  "go.back.home": "Regresar al inicio"
+  "go.back.home": "Regresar al inicio",
+  "components.layout.header.userMenu.login": "Iniciar sesión",
+  "components.layout.header.userMenu.logout": "Cerrar sesión"
 }
