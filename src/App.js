@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import GlobalContext from "./config/GlobalContext";
 import config from "./config/config";
+import { ProvideAuth } from "./utils/auth";
 import Application from "./containers/application/Application";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -45,7 +46,9 @@ function App() {
         setMainConfig
       }}>
         <IntlProvider locale={locale} messages={messages}>
+        <ProvideAuth>
           <Application />
+        </ProvideAuth>
         </IntlProvider>
       </GlobalContext.Provider>
     </ThemeProvider>

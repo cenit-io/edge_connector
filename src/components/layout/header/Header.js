@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
+import { name } from '../../../config/projectConfig';
 import { FormattedMessage } from "react-intl";
 import { drawerWidth } from "../../../config/config";
 import UserMenu from "./userMenu/UserMenu";
@@ -33,7 +34,7 @@ const Header = ({
         {openDrawer ? <ChevronLeftIcon /> : <ChevronRightIcon />}
       </IconButton>
       <Typography variant="h6" noWrap component="div">
-        <FormattedMessage id="project.comment" />
+        {name}
       </Typography>
       <UserMenu />
     </Toolbar>
