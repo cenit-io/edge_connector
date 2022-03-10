@@ -1,7 +1,7 @@
-import HomeIcon from "@mui/icons-material/Home";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import TranslateIcon from "@mui/icons-material/Translate";
+import HomeIcon from '@mui/icons-material/Home';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import TranslateIcon from '@mui/icons-material/Translate';
 
 const getMenuData = intl => [
   {

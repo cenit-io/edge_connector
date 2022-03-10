@@ -1,11 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Toolbar from "@mui/material/Toolbar";
-import MainMenu from "./mainMenu/MainMenu";
-import { drawerWidth } from "../../../config/config";
-import MainMenuFooter from "./mainMenuFooter/MainMenuFooter";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Toolbar from '@mui/material/Toolbar';
+
+import MainMenu from './mainMenu/MainMenu';
+import { drawerWidth } from '../../../config/config';
+import MainMenuFooter from './mainMenuFooter/MainMenuFooter';
 
 const SideBar = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
   <Drawer

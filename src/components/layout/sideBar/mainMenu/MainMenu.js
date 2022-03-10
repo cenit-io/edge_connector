@@ -1,21 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import Avatar from "@mui/material/Avatar";
-import Icon from "@mui/material/Icon";
-import Divider from "@mui/material/Divider";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { useIntl } from "react-intl";
-import getMenuData from "./menuData";
+import React, { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import Avatar from '@mui/material/Avatar';
+import Icon from '@mui/material/Icon';
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Collapse from '@mui/material/Collapse';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useIntl } from 'react-intl';
+
+import getMenuData from './menuData';
 
 const MainMenu = ({dense}) => {
   const [expand, setExpand] = useState('');

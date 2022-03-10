@@ -1,16 +1,17 @@
-import React from "react";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { FormattedMessage } from 'react-intl';
+
 import { name } from '../../../config/projectConfig';
-import { FormattedMessage } from "react-intl";
-import { drawerWidth } from "../../../config/config";
-import UserMenu from "./userMenu/UserMenu";
+import { drawerWidth } from '../../../config/config';
+import UserMenu from './userMenu/UserMenu';
 
 const Header = ({
   isWideDevice, handleDrawerToggle, openDrawer

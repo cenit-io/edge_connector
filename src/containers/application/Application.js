@@ -1,7 +1,8 @@
-import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
-import MainLayout from "../../components/layout/MainLayout";
-import Loading from "../../components/loading/Loading";
+import React, { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import MainLayout from '../../components/layout/MainLayout';
+import Loading from '../../components/loading/Loading';
 
 const HomeAsync = React.lazy(() => import('../home/Home'), { fallback: <Loading /> });
 const NotFoundAsync = React.lazy(() => import('../notFound/NotFound'), { fallback: <Loading /> });

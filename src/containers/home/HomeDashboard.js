@@ -1,5 +1,5 @@
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
 const HomeDashboard = () => (
   <>

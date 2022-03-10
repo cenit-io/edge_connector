@@ -1,8 +1,9 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
+import React from 'react';
+import Typography from '@mui/material/Typography';
 import { Helmet } from 'react-helmet';
-import { name, description } from '../../config/projectConfig';
 import { FormattedMessage, useIntl } from 'react-intl';
+
+import { name, description } from '../../config/projectConfig';
 import Content from '../content/Content';
 
 const Home = () => {
