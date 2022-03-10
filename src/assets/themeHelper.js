@@ -1,4 +1,4 @@
-import { themes } from "../config/config";
+import { themes } from '../config/config';
 
 const getTheme = (mode = themes.light) => ({
   palette: {

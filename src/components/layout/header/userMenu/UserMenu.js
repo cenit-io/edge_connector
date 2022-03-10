@@ -1,24 +1,25 @@
-import React, { useContext, useState } from "react";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import React, { useContext, useState } from 'react';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
-import IconButton from "@mui/material/IconButton";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import TranslateIcon from "@mui/icons-material/Translate";
-import Divider from "@mui/material/Divider";
+import TranslateIcon from '@mui/icons-material/Translate';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import Divider from '@mui/material/Divider';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import GlobalContext from "../../../../config/GlobalContext";
-import { FormattedMessage } from "react-intl";
 import Box from '@mui/material/Box';
-import { themes } from "../../../../config/config";
-import ManageUserOptions from "./ManageUserOptions";
+import { FormattedMessage } from 'react-intl';
+
+import GlobalContext from '../../../../config/GlobalContext';
+import { themes } from '../../../../config/config';
 import { useAuth } from '../../../../utils/auth';
+import ManageUserOptions from './ManageUserOptions';
 
 const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);

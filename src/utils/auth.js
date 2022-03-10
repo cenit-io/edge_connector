@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
-import {
-    useLocation,
-} from "react-router-dom";
+import React, { useState, useEffect, useContext, createContext } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const getSession = () => {
     const currentTenant = sessionStorage.getItem('currentTenant');
