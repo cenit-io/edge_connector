@@ -17,5 +17,9 @@
   "page.not.found.error": "Error 404: La URL solicitada no se encuentra o no está disponible",
   "go.back.home": "Regresar al inicio",
   "components.layout.header.userMenu.login": "Iniciar sesión",
-  "components.layout.header.userMenu.logout": "Cerrar sesión"
+  "components.layout.header.userMenu.logout": "Cerrar sesión",
+  "components.layout.sidebar.mainMenu.integrations": "Integraciones",
+  "components.layout.sidebar.mainMenu.availableIntegrations": "Integraciones disponibles",
+  "components.layout.sidebar.mainMenu.connectedIntegrations": "Integraciones Conectadas",
+  "components.layout.sidebar.mainMenu.channels": "Canales"
 }

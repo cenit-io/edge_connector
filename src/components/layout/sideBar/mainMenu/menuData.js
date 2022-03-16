@@ -2,6 +2,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import TranslateIcon from '@mui/icons-material/Translate';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
 
 const getMenuData = intl => [
   {
@@ -20,15 +21,27 @@ const getMenuData = intl => [
     divider: true
   },
   {
-    key: '/item',
-    label: `${intl.formatMessage({ id: 'item' })} 1`,
-    icon: <InboxIcon />,
+    key: '/integrations',
+    label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.integrations' }),
+    icon: <AccountTreeIcon />,
     children: [
       {
-        key: '/item/subitem',
-        label: 'SubItem',
+        key: '/available-integrations',
+        label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.availableIntegrations' }),
         icon: <MailIcon />,
-        link: '/item/subitem'
+        link: '/available-integrations'
+      },
+      {
+        key: '/connected-integrations',
+        label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.connectedIntegrations' }),
+        icon: <MailIcon />,
+        link: '/connected-integrations'
+      },
+      {
+        key: '/channels',
+        label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.channels' }),
+        icon: <MailIcon />,
+        link: '/channels'
       }
     ]
   },
