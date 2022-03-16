@@ -10,6 +10,11 @@ import { ProvideAuth } from './utils/auth';
 import Application from './containers/application/Application';
 import getTheme from './assets/themeHelper';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
+
 const messageLoader = {
   en: () => import("./translations/en.json"),
   es: () => import("./translations/es.json")
@@ -23,6 +28,8 @@ function App() {
   const { locale, theme } = mainConfig;
 
   const mainTheme = createTheme(getTheme(theme));
+
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     messageLoader[locale]()
@@ -47,9 +54,11 @@ function App() {
         setMainConfig
       }}>
         <IntlProvider locale={locale} messages={messages}>
-        <ProvideAuth>
-          <Application />
-        </ProvideAuth>
+          <QueryClientProvider client={queryClient}>
+            <ProvideAuth>
+              <Application />
+            </ProvideAuth>
+          </QueryClientProvider>
         </IntlProvider>
       </GlobalContext.Provider>
     </ThemeProvider>

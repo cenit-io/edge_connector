@@ -7,6 +7,7 @@ import Loading from '../../components/loading/Loading';
 const HomeAsync = React.lazy(() => import('../home/Home'), { fallback: <Loading /> });
 const NotFoundAsync = React.lazy(() => import('../notFound/NotFound'), { fallback: <Loading /> });
 const ExampleAsync = React.lazy(() => import('../example/Example'), { fallback: <Loading /> });
+const AvailableIntegrationsAsync = React.lazy(() => import('../integrations/AvailableIntegrations'), { fallback: <Loading /> });
 
 const Application = () => (
   <MainLayout>
@@ -14,6 +15,7 @@ const Application = () => (
       <Routes>
         <Route index element={<HomeAsync />} />
         <Route path="/example" element={<ExampleAsync />} />
+        <Route path="/available-integrations" element={<AvailableIntegrationsAsync />} />
         <Route path="*" element={<NotFoundAsync />} />
       </Routes>
     </Suspense>

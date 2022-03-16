@@ -21,7 +21,7 @@ API.interceptors.request.use((config) => {
   const msg = config.url + queryString + body;
 
   // Generate the corresponding hmac header using the js-sha256 or similar library.
-  config.headers.common['X-OMNA-HMac'] = sha256.hmac.update(currentTenant?.secret, msg).hex();
+  config.headers.common['X-OMNA-HMac'] = sha256.hmac.update(currentTenant?.secret || '', msg).hex();
 
   return config;
 });
