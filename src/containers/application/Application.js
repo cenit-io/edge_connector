@@ -16,8 +16,8 @@ const Application = () => (
       <Routes>
         <Route index element={<HomeAsync />} />
         <Route path="/example" element={<ExampleAsync />} />
-        <Route path="/available-integrations" element={<AvailableIntegrationsAsync />} />
-        <Route path="channels" element={<Channels />} />
+        <Route path="/integrations/available-integrations" element={<AvailableIntegrationsAsync />} />
+        <Route path="/integrations/channels" element={<Channels />} />
         <Route path="*" element={<NotFoundAsync />} />
       </Routes>
     </Suspense>

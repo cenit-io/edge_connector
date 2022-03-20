@@ -3,6 +3,14 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import TranslateIcon from '@mui/icons-material/Translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import MultipleStopIcon from '@mui/icons-material/MultipleStop';
+
+// here the main idea is to have the same key and link and to keep tracking on the parents items
+// example: 
+// /item
+// /item/child
+// /item/child/grandchild
+// /item/child2
 
 const getMenuData = intl => [
   {
@@ -26,22 +34,22 @@ const getMenuData = intl => [
     icon: <AccountTreeIcon />,
     children: [
       {
-        key: '/available-integrations',
+        key: '/integrations/available-integrations',
         label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.availableIntegrations' }),
         icon: <MailIcon />,
-        link: '/available-integrations'
+        link: '/integrations/available-integrations'
       },
       {
-        key: '/connected-integrations',
+        key: '/integrations/connected-integrations',
         label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.connectedIntegrations' }),
         icon: <MailIcon />,
-        link: '/connected-integrations'
+        link: '/integrations/connected-integrations'
       },
       {
-        key: '/channels',
+        key: '/integrations/channels',
         label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.channels' }),
-        icon: <MailIcon />,
-        link: '/channels'
+        icon: <MultipleStopIcon />,
+        link: '/integrations/channels'
       }
     ]
   },

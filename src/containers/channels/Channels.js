@@ -15,7 +15,7 @@ function Channels() {
       <Typography><FormattedMessage id="components.layout.sidebar.mainMenu.channels" /></Typography>
       <Grid container spacing={2}>
         {data.map(x => (
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ChannelsCard actionFunc={action} itemData={x} />
           </Grid>
         ))}
