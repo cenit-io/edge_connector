@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-// import data from './staticData';
 import { FormattedMessage } from 'react-intl';
 import { useQuery } from 'react-query';
 
@@ -9,6 +8,7 @@ import ChannelsCard from '../../components/common/channelsCard/ChannelsCard';
 import Loading from '../../components/loading/Loading';
 import CustomizedSnackbar from '../../components/alert/CustomizedSnackbar';
 
+import SEVERITY from '../../config/constants';
 import { getChannels } from '../../api/integrations';
 
 function Channels() {
@@ -17,7 +17,7 @@ function Channels() {
 
   useEffect(() => {
     if (error) {
-      setMessage({ message: `Error: ${error.message}`, severity: 'error' });
+      setMessage({ message: `Error: ${error.message}`, severity: SEVERITY.error });
     }
   }, [error]);
 
@@ -32,7 +32,9 @@ function Channels() {
   return (
     <>
       {isLoading && <Loading />}
-      <Typography><FormattedMessage id="components.layout.sidebar.mainMenu.channels" /></Typography>
+      <Typography>
+        <FormattedMessage id="components.layout.sidebar.mainMenu.channels" />
+      </Typography>
       {data && (
         <Grid container spacing={2}>
           {data.map(x => (
@@ -42,7 +44,9 @@ function Channels() {
           ))}
         </Grid>
       )} 
-      <FormattedMessage id={isLoading ? "common.please.wait" : "common.no.data"} />
+      <Typography>
+        <FormattedMessage id={isLoading ? "common.please.wait" : "common.no.data"} />
+      </Typography>
       {message && (
         <CustomizedSnackbar message={`Error: ${error.message}`} open onClose={handleCloseMessage} />
       )}
