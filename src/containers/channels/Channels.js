@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { FormattedMessage } from 'react-intl';
 import { useQuery } from 'react-query';
+import isEmpty from 'lodash/isEmpty';
 
 import ChannelsCard from '../../components/common/channelsCard/ChannelsCard';
 import Loading from '../../components/loading/Loading';
@@ -36,16 +37,18 @@ function Channels() {
       </Typography>
       {data && (
         <Grid container spacing={2}>
-          {data.map(x => (
+          {data.data.map(x => (
             <Grid item xs={12} sm={6} md={3}>
               <ChannelsCard actionFunc={action} itemData={x} />
             </Grid>
           ))}
         </Grid>
-      )} 
-      <Typography>
-        <FormattedMessage id={isLoading ? "common.please.wait" : "common.no.data"} />
-      </Typography>
+      )}
+      {isEmpty(data) && (
+        <Typography>
+          <FormattedMessage id={isLoading ? "common.please.wait" : "common.no.data"} />
+        </Typography>
+      )}
       {message && (
         <CustomizedSnackbar message={message.message} open onClose={handleCloseMessage} />
       )}

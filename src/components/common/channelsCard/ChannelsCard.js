@@ -10,6 +10,8 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import { FormattedMessage } from 'react-intl';
 
+import isEqual from 'lodash/isEqual';
+
 function ChannelsCard({ actionFunc, itemData }) {
 
   const beforeDispatchAction = () => {
@@ -21,14 +23,14 @@ function ChannelsCard({ actionFunc, itemData }) {
       <CardContent>
         <Box
           component="img"
-          alt={itemData.icon}
-          src={`/logos/${itemData.icon}.png`} 
+          alt={itemData.title}
+          src={itemData.logo}
           sx={{ width: '100px' }}
         />
         <Divider sx={{ mt: '10px', mb: '-15px' }} />
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography>{itemData.channel}</Typography>
+        <Typography>{itemData.group}</Typography>
         <Button size="small" onClick={beforeDispatchAction}>
           <FormattedMessage id="actions.add" />
           <AddIcon fontSize="small" />
@@ -41,15 +43,15 @@ function ChannelsCard({ actionFunc, itemData }) {
 ChannelsCard.propTypes = {
   actionFunc: PropTypes.func.isRequired,
   itemData: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    channel: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
   })
 };
 
 const notRenderIf = (current, next) => (
-  current.itemData.id === next.itemData.id && current.itemData.channel === next.itemData.channel
-  && current.itemData.icon === next.itemData.icon
+  isEqual(current, next)
 );
 
 export default React.memo(ChannelsCard, notRenderIf);
