@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { FormattedMessage } from 'react-intl';
 import { useQuery } from 'react-query';
-import isEmpty from 'lodash/isEmpty';
 
 import ChannelsCard from '../../components/common/channelsCard/ChannelsCard';
 import Loading from '../../components/loading/Loading';
@@ -44,7 +43,7 @@ function Channels() {
           ))}
         </Grid>
       )}
-      {isEmpty(data) && (
+      {!data && !data.data.length (
         <Typography>
           <FormattedMessage id={isLoading ? "common.please.wait" : "common.no.data"} />
         </Typography>

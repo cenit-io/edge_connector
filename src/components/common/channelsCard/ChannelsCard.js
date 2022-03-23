@@ -9,9 +9,6 @@ import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import { FormattedMessage } from 'react-intl';
-
-import isEqual from 'lodash/isEqual';
-
 function ChannelsCard({ actionFunc, itemData }) {
 
   const beforeDispatchAction = () => {
@@ -51,7 +48,7 @@ ChannelsCard.propTypes = {
 };
 
 const notRenderIf = (current, next) => (
-  isEqual(current, next)
+  JSON.stringify(current) === JSON.stringify(next)
 );
 
 export default React.memo(ChannelsCard, notRenderIf);
