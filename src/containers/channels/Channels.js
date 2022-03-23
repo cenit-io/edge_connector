@@ -43,14 +43,14 @@ function Channels() {
           ))}
         </Grid>
       )}
-      {!data && !data.data.length (
+      {!data?.data?.length && (
         <Typography>
           <FormattedMessage id={isLoading ? "common.please.wait" : "common.no.data"} />
         </Typography>
       )}
       {message && (
         <CustomizedSnackbar message={message.message} open onClose={handleCloseMessage} />
-      )}
+      )} 
     </>
   );
 }
