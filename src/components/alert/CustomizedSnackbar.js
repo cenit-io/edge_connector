@@ -5,6 +5,8 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Portal from '@mui/material/Portal';
 
+import SEVERITY from '../../config/constants';
+
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -34,5 +36,5 @@ CustomizedSnackbar.propTypes = {
 
 CustomizedSnackbar.defaultProps = {
   autoHideDuration: 6000,
-  severity: 'error'
+  severity: SEVERITY.error
 };

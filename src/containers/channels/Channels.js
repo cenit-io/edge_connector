@@ -8,7 +8,6 @@ import ChannelsCard from '../../components/common/channelsCard/ChannelsCard';
 import Loading from '../../components/loading/Loading';
 import CustomizedSnackbar from '../../components/alert/CustomizedSnackbar';
 
-import SEVERITY from '../../config/constants';
 import { getChannels } from '../../api/integrations';
 
 function Channels() {
@@ -17,7 +16,7 @@ function Channels() {
 
   useEffect(() => {
     if (error) {
-      setMessage({ message: `Error: ${error.message}`, severity: SEVERITY.error });
+      setMessage({ message: `Error: ${error.message}` });
     }
   }, [error]);
 
