@@ -47,7 +47,7 @@ function Channels() {
         <FormattedMessage id={isLoading ? "common.please.wait" : "common.no.data"} />
       </Typography>
       {message && (
-        <CustomizedSnackbar message={`Error: ${error.message}`} open onClose={handleCloseMessage} />
+        <CustomizedSnackbar message={message.message} open onClose={handleCloseMessage} />
       )}
     </>
   );
