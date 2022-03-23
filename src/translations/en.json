@@ -24,5 +24,8 @@
   "components.layout.sidebar.mainMenu.integrations": "Integrations",
   "components.layout.sidebar.mainMenu.availableIntegrations": "Available Integrations",
   "components.layout.sidebar.mainMenu.connectedIntegrations": "Connected Integrations",
-  "components.layout.sidebar.mainMenu.channels": "Channels"
+  "components.layout.sidebar.mainMenu.channels": "Channels",
+  
+  "common.please.wait": "Please wait...",
+  "common.no.data": "No data"
 }

@@ -29,9 +29,9 @@ export const uninstallAvailableIntegration = async (id) => {
 };
 
 export const getChannels = async (payload = {}) => {
-    const { params = {} } = payload;
+    const params = { ...payload };
     try {
-        const response = await API.get(`/available/integrations/channels`, { params });
+        const response = await API.get('/available/integrations/channels', { params });
         return response.data;
     } catch (error) {
         throw new Error(error.response?.data?.message || 'Error getting channels')
