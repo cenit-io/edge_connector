@@ -16,10 +16,16 @@
   "page.not.found": "Page not found",
   "page.not.found.error": "Error 404: The requested URL was not found or is not available",
   "go.back.home": "Go back to home",
+
+  "actions.add": "Add",
+
   "components.layout.header.userMenu.login": "Login",
   "components.layout.header.userMenu.logout": "Logout",
   "components.layout.sidebar.mainMenu.integrations": "Integrations",
   "components.layout.sidebar.mainMenu.availableIntegrations": "Available Integrations",
   "components.layout.sidebar.mainMenu.connectedIntegrations": "Connected Integrations",
-  "components.layout.sidebar.mainMenu.channels": "Channels"
+  "components.layout.sidebar.mainMenu.channels": "Channels",
+  
+  "common.please.wait": "Please wait...",
+  "common.no.data": "No data"
 }
