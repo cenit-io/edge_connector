@@ -18,6 +18,8 @@
   "go.back.home": "Regresar al inicio",
 
   "actions.add": "Adicionar",
+  "actions.cancel": "Cancelar",
+  "actions.save": "Salvar",
 
   "components.layout.header.userMenu.login": "Iniciar sesión",
   "components.layout.header.userMenu.logout": "Cerrar sesión",
@@ -27,5 +29,12 @@
   "components.layout.sidebar.mainMenu.channels": "Canales",
   
   "common.please.wait": "Por favor, espere...",
-  "common.no.data": "No hay datos"
+  "common.no.data": "No hay datos",
+  "common.hint.enter.here": "Entre aquí {item}",
+
+  "add.integration": "Adicionar integración",
+
+  "authorized": "Autorizado",
+  "channel": "Canal",
+  "name": "Nombre"
 }

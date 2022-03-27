@@ -27,8 +27,8 @@ function ChannelsCard({ actionFunc, itemData }) {
         <Divider sx={{ mt: '10px', mb: '-15px' }} />
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography>{itemData.group}</Typography>
-        <Button size="small" onClick={beforeDispatchAction}>
+        <Typography sx={{ fontStyle: 'italic' }}>{itemData.group}</Typography>
+        <Button size="small" onClick={beforeDispatchAction} variant="outlined">
           <FormattedMessage id="actions.add" />
           <AddIcon fontSize="small" />
         </Button>

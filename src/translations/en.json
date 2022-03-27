@@ -18,6 +18,8 @@
   "go.back.home": "Go back to home",
 
   "actions.add": "Add",
+  "actions.cancel": "Cancel",
+  "actions.save": "Save",
 
   "components.layout.header.userMenu.login": "Login",
   "components.layout.header.userMenu.logout": "Logout",
@@ -27,5 +29,12 @@
   "components.layout.sidebar.mainMenu.channels": "Channels",
   
   "common.please.wait": "Please wait...",
-  "common.no.data": "No data"
+  "common.no.data": "No data",
+  "common.hint.enter.here": "Enter {item} here",
+
+  "add.integration": "Add integration",
+
+  "authorized": "Authorized",
+  "channel": "Channel",
+  "name": "Name"
 }

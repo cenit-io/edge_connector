@@ -9,9 +9,11 @@ import Loading from '../../components/loading/Loading';
 import CustomizedSnackbar from '../../components/alert/CustomizedSnackbar';
 
 import { getChannels } from '../../api/integrations';
+import AddChannel from './AddChannel';
 
 function Channels() {
   const [message, setMessage] = useState(null);
+  const [addChannel, setAddChannel] = useState(null);
   const { isLoading, error, data } = useQuery('channels', async () => getChannels());
 
   useEffect(() => {
@@ -21,11 +23,16 @@ function Channels() {
   }, [error]);
 
   const action = useCallback(payload => {
-    console.log(payload);
+    setAddChannel(payload);
   }, []);
 
   const handleCloseMessage = useCallback(() => {
     setMessage(null);
+  }, []);
+
+  const handleAccept = useCallback(payload => {
+    console.log(payload);
+    handleCloseMessage();
   }, []);
 
   return (
@@ -50,7 +57,14 @@ function Channels() {
       )}
       {message && (
         <CustomizedSnackbar message={message.message} open onClose={handleCloseMessage} />
-      )} 
+      )}
+      {addChannel && (
+        <AddChannel
+          handleAccept={handleAccept}
+          handleClose={() => { setAddChannel(null); }}
+          data={addChannel}
+        />
+      )}
     </>
   );
 }
