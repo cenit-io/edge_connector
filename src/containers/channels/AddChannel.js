@@ -8,14 +8,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Slide from '@mui/material/Slide';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+import Transition from '../../components/common/global/Transition';
 
 const AddChannel = ({ data, handleAccept, handleClose }) => {
   const intl = useIntl();
