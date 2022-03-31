@@ -9,6 +9,7 @@ const NotFoundAsync = React.lazy(() => import('../notFound/NotFound'));
 const ExampleAsync = React.lazy(() => import('../example/Example'));
 const AvailableIntegrationsAsync = React.lazy(() => import('../integrations/AvailableIntegrations'));
 const Channels = React.lazy(() => import('../channels/ChannelsHome'));
+const TasksAsync = React.lazy(() => import('../tasks/TaskList'));
 
 const Application = () => (
   <MainLayout>
@@ -18,6 +19,7 @@ const Application = () => (
         <Route path="/example" element={<ExampleAsync />} />
         <Route path="/integrations/available-integrations" element={<AvailableIntegrationsAsync />} />
         <Route path="/integrations/channels" element={<Channels />} />
+        <Route path="/tasks" element={<TasksAsync />} />
         <Route path="*" element={<NotFoundAsync />} />
       </Routes>
     </Suspense>

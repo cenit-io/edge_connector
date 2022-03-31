@@ -16,25 +16,27 @@
   "page.not.found": "Página no encontrada",
   "page.not.found.error": "Error 404: La URL solicitada no se encuentra o no está disponible",
   "go.back.home": "Regresar al inicio",
-
   "actions.add": "Adicionar",
   "actions.cancel": "Cancelar",
   "actions.save": "Salvar",
-
   "components.layout.header.userMenu.login": "Iniciar sesión",
   "components.layout.header.userMenu.logout": "Cerrar sesión",
   "components.layout.sidebar.mainMenu.integrations": "Integraciones",
   "components.layout.sidebar.mainMenu.availableIntegrations": "Integraciones disponibles",
   "components.layout.sidebar.mainMenu.connectedIntegrations": "Integraciones Conectadas",
   "components.layout.sidebar.mainMenu.channels": "Canales",
-  
+  "components.layout.sidebar.mainMenu.tasks": "Tareas",
   "common.please.wait": "Por favor, espere...",
   "common.no.data": "No hay datos",
   "common.hint.enter.here": "Entre aquí {item}",
-
+  "common.description": "Descripción",
+  "common.created.at": "Creado",
+  "common.progress": "Progreso",
+  "common.status": "Estado",
+  "common.actions": "Acciones",
   "add.integration": "Adicionar integración",
-
   "authorized": "Autorizado",
   "channel": "Canal",
-  "name": "Nombre"
+  "name": "Nombre",
+  "title.tasks": "Tareas"
 }
