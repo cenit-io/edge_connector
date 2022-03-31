@@ -16,25 +16,27 @@
   "page.not.found": "Page not found",
   "page.not.found.error": "Error 404: The requested URL was not found or is not available",
   "go.back.home": "Go back to home",
-
   "actions.add": "Add",
   "actions.cancel": "Cancel",
   "actions.save": "Save",
-
   "components.layout.header.userMenu.login": "Login",
   "components.layout.header.userMenu.logout": "Logout",
   "components.layout.sidebar.mainMenu.integrations": "Integrations",
   "components.layout.sidebar.mainMenu.availableIntegrations": "Available Integrations",
   "components.layout.sidebar.mainMenu.connectedIntegrations": "Connected Integrations",
   "components.layout.sidebar.mainMenu.channels": "Channels",
-  
+  "components.layout.sidebar.mainMenu.tasks": "Tasks",
   "common.please.wait": "Please wait...",
   "common.no.data": "No data",
   "common.hint.enter.here": "Enter {item} here",
-
+  "common.description": "Description",
+  "common.created.at": "Created at",
+  "common.progress": "Progress",
+  "common.status": "Status",
+  "common.actions": "Actions",
   "add.integration": "Add integration",
-
   "authorized": "Authorized",
   "channel": "Channel",
-  "name": "Name"
+  "name": "Name",
+  "title.tasks": "Tasks"
 }
