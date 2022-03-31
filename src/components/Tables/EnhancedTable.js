@@ -119,7 +119,7 @@ EnhancedTableToolbar.propTypes = {
 export default function EnhancedTable(props) {
 
   const {
-    title, headCells, rows, page, rowsPerPage = 5, withCheckboxSelection, selected, onChange
+    title, headCells, rows, page, rowsPerPage = 5, rowCount, withCheckboxSelection, selected, onChange
   } = props;
 
   const dispatch = (payload) => onChange(payload);
@@ -161,10 +161,6 @@ export default function EnhancedTable(props) {
 
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
-  // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
   const renderCustomCell = (render, id = '', dataArray = null) => render(id, dataArray);
 
   const renderCell = (dataArray, keyArray) => keyArray.map((itemCell, index) => {
@@ -191,13 +187,13 @@ export default function EnhancedTable(props) {
               headCells={headCells}
               numSelected={selected.length}
               onSelectAllClick={handleSelectAllClick}
-              rowCount={rows.length}
+              rowCount={rowCount}
               withCheckboxSelection={withCheckboxSelection}
             />
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.slice().sort(getComparator(order, orderBy)) */}
-                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                {rows.slice(0, rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
@@ -227,22 +223,13 @@ export default function EnhancedTable(props) {
                     </TableRow>
                   );
                 })}
-                 {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: (53) * emptyRows,
-                  }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[10, 25, 50]}
           component="div"
-          count={rows.length}
+          count={rowCount}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -257,6 +244,7 @@ EnhancedTable.propTypes = {
   title: PropTypes.string,
   headCells: PropTypes.array.isRequired,
   rows: PropTypes.array,
+  rowCount: PropTypes.number,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
   withCheckboxSelection: PropTypes.bool,
@@ -268,6 +256,7 @@ EnhancedTable.defaultProps = {
   title: '',
   page: 0,
   rows: [],
+  rowCount: 0,
   withCheckboxSelection: false,
   selected: [],
   onChange: () => {},
