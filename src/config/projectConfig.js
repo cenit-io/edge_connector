@@ -1,2 +1,2 @@
-export const name = 'Edge Conector';
-export const description = 'Project description';
+export const name = 'Ebanux';
+export const description = 'App to connect sales channels';
