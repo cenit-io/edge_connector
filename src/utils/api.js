@@ -17,6 +17,7 @@ API.interceptors.request.use((config) => {
   
   const queryString = qs.stringify(config.params);
   const body = config.data ? JSON.stringify(config.data) : '';
+  
   // Join the service path, queryString and body
   const msg = config.url + queryString + body;
 
