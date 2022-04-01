@@ -49,7 +49,13 @@ const RenderStep = ({
               onClick={handleAction}
               variant="outlined"
               size="small"
-              sx={{ mt: 'auto', width: 'max-content' }}
+              sx={{ 
+                mt: 'auto', 
+                width: 'max-content',
+                '@media (max-width: 600px)': {
+                  width: '175px'
+                }
+              }}
             >
               {action.btn}
             </Button>
