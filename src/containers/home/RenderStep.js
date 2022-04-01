@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -13,6 +14,7 @@ const RenderStep = ({
   action, enabled, next, index, message
 }) => {
   const color = !enabled ? theme => theme.palette.text.disabled : undefined;
+  const matches = useMediaQuery('(min-width: 770px)');
 
   const handleAction = () => {
     action.action(index);
@@ -20,15 +22,16 @@ const RenderStep = ({
 
   const displayStep = () => (
     <Alert icon={false} severity="info" sx={{
-      backgroundColor: !enabled ? theme => theme.palette.info.contrastText : undefined,
-      flexGrow: 1
+      backgroundColor: !enabled ? 'transparent' : undefined,
+      flexGrow: 1,
+      '& .MuiAlert-message': { m: 'auto' }
     }}>
-      <Typography sx={{ textTransform: 'uppercase', color }} variant="caption">
-        <FormattedMessage id="home.step" />
-      </Typography>
-      <Typography variant="h5" sx={{ fontWeight: 'bold', color }}>
-        {index + 1}
-      </Typography>
+        <Typography sx={{ textTransform: 'uppercase', color }} variant="caption">
+          <FormattedMessage id="home.step" />
+        </Typography>
+        <Typography variant="h5" sx={{ fontWeight: 'bold', color }}>
+          {index + 1}
+        </Typography>
     </Alert>
   );
 
@@ -38,8 +41,11 @@ const RenderStep = ({
         <Box sx={{ width: '65px', textAlign: 'center', mr: '10px', display: 'flex' }}>
           {displayStep()}
         </Box>
-        <Box sx={{ width: '100%', display: 'flex' }}>
-          <Box sx={{ width: '50%', display: 'flex', flexDirection: 'column' }}>
+        <Box sx={{ width: '100%', display: matches ? 'flex' : undefined }}>
+          <Box sx={{ 
+            width: '100%', 
+            display: 'flex', 
+            flexDirection: 'column' }}>
             <Typography sx={{ color }}>{message}</Typography>
             <Button
               onClick={handleAction}
@@ -51,8 +57,8 @@ const RenderStep = ({
               {action.btn}
             </Button>
           </Box>
-          <Divider orientation="vertical" flexItem sx={{ m: '0 5px  5px' }} />
-          <Box sx={{ width: '50%' }}>
+          <Divider orientation={matches ? 'vertical' : 'horizontal'} flexItem sx={{ m: matches ? '0 5px 0 5px' : '5px 0 5px 0' }} />
+          <Box sx={{ width: '100%' }}>
             <Typography sx={{ fontWeight: 'bold', color }}><FormattedMessage id="home.what.is.next" /></Typography>
             <Typography sx={{ color }}>{next}</Typography>
           </Box>
