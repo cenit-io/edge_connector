@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { FormattedMessage, useIntl } from 'react-intl';
 import RenderStep from './RenderStep';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const intl = useIntl();
