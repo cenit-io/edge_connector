@@ -1,5 +1,18 @@
 import API from '../utils/api';
 
+export const getConnectedIntegrations = async () => {
+    const params = {
+        limit: 25,
+        offset: 0
+    };
+    try {
+        const resp = await API.get('/integrations', { params });
+        return resp.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || 'Error getting available integrations')
+    }
+};
+
 export const getAvailableIntegrations = async (payload = {}) => {
     const { params = {} } = payload;
     try {

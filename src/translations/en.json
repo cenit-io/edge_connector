@@ -39,6 +39,7 @@
   "channel": "Channel",
   "name": "Name",
   "title.tasks": "Tasks",
+  "title.connected.integrations": "Connected Integrations",
   "home.salut": "Hi! Let's setup Ebanux app!",
   "home.what.is.next": "What's next?",
   "home.step": "Step",
@@ -53,5 +54,9 @@
   "home.step.3.btn": "Get subscription",
   "home.step.4": "Configure your integration workflows such as importing orders, products & inventory sync. You can select pre-made workflows or customise them to your business needs.",
   "home.step.4.next": "Click on the \"Create workflows\" button to configure all the necessary integration workflows.",
-  "home.step.4.btn": "Create workflows"
+  "home.step.4.btn": "Create workflows",
+  "tooltip.install": "Install",
+  "tooltip.uninstall": "Uninstall",
+  "tooltip.authorized": "Authorized",
+  "tooltip.noAuthorized": "No authorized"
 }
