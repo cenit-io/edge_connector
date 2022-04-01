@@ -100,7 +100,7 @@ const MainMenu = ({dense}) => {
       }
       setSelected(pathname);
     }
-  }, []);
+  }, [pathname]);
 
   const menuData = getMenuData(intl);
 

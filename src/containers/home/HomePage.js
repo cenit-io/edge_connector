@@ -6,18 +6,21 @@ import Typography from '@mui/material/Typography';
 import { FormattedMessage, useIntl } from 'react-intl';
 import RenderStep from './RenderStep';
 
+import { useNavigate } from "react-router-dom";
+
 const HomePage = () => {
   const intl = useIntl();
+  const navigate = useNavigate();
 
   const steps = [
     {
       message: intl.formatMessage({ id: 'home.step.1' }),
       next: intl.formatMessage({ id: 'home.step.1.next' }),
-      action: { btn: intl.formatMessage({ id: 'home.step.1.btn' }), action: index => { console.log(index); } }
+      action: { btn: intl.formatMessage({ id: 'home.step.1.btn' }), action: () => { navigate('/integrations/available-integrations'); } }
     }, {
       message: intl.formatMessage({ id: 'home.step.2' }),
       next: intl.formatMessage({ id: 'home.step.2.next' }),
-      action: { btn: intl.formatMessage({ id: 'home.step.2.btn' }), action: index => { console.log(index); } }
+      action: { btn: intl.formatMessage({ id: 'home.step.2.btn' }), action: () => { navigate('/integrations/connected-integrations'); } }
     }, {
       message: intl.formatMessage({ id: 'home.step.3' }),
       next: intl.formatMessage({ id: 'home.step.3.next' }),
