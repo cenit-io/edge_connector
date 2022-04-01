@@ -11,32 +11,30 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { FormattedMessage } from 'react-intl';
 
 const RenderStep = ({
-  action, enabled, next, index, message
+  action, next, index, message
 }) => {
-  const color = !enabled ? theme => theme.palette.text.disabled : undefined;
   const matches = useMediaQuery('(min-width: 770px)');
 
   const handleAction = () => {
-    action.action(index);
+    action.action();
   };
 
   const displayStep = () => (
     <Alert icon={false} severity="info" sx={{
-      backgroundColor: !enabled ? 'transparent' : undefined,
       flexGrow: 1,
       '& .MuiAlert-message': { m: 'auto' }
     }}>
-        <Typography sx={{ textTransform: 'uppercase', color }} variant="caption">
+        <Typography sx={{ textTransform: 'uppercase' }} variant="caption">
           <FormattedMessage id="home.step" />
         </Typography>
-        <Typography variant="h5" sx={{ fontWeight: 'bold', color }}>
+        <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
           {index + 1}
         </Typography>
     </Alert>
   );
 
   return (
-    <Paper variant="outlined" sx={{ width: '100%', padding: 1, mb: '5px' }}>
+    <Paper variant="outlined" sx={{ width: '100%', p: 2, mb: '10px' }}>
       <Box sx={{ display: 'flex' }}>
         <Box sx={{ width: '65px', textAlign: 'center', mr: '10px', display: 'flex' }}>
           {displayStep()}
@@ -46,31 +44,26 @@ const RenderStep = ({
             width: '100%', 
             display: 'flex', 
             flexDirection: 'column' }}>
-            <Typography sx={{ color }}>{message}</Typography>
+            <Typography>{message}</Typography>
             <Button
               onClick={handleAction}
               variant="outlined"
               size="small"
               sx={{ mt: 'auto', width: 'max-content' }}
-              disabled={!enabled}
             >
               {action.btn}
             </Button>
           </Box>
-          <Divider orientation={matches ? 'vertical' : 'horizontal'} flexItem sx={{ m: matches ? '0 5px 0 5px' : '5px 0 5px 0' }} />
+          <Divider orientation={matches ? 'vertical' : 'horizontal'} flexItem sx={{ m: matches ? '0 10px 0 10px' : '10px 0 10px 0' }} />
           <Box sx={{ width: '100%' }}>
-            <Typography sx={{ fontWeight: 'bold', color }}><FormattedMessage id="home.what.is.next" /></Typography>
-            <Typography sx={{ color }}>{next}</Typography>
+            <Typography sx={{ fontWeight: 'bold' }}><FormattedMessage id="home.what.is.next" /></Typography>
+            <Typography>{next}</Typography>
           </Box>
         </Box>
       </Box>
     </Paper>
   );
 }
-
-RenderStep.defaultProps = {
-  enabled: false
-};
 
 RenderStep.propTypes = {
   index: PropTypes.number.isRequired,
@@ -79,8 +72,7 @@ RenderStep.propTypes = {
   action: PropTypes.shape({
     btn: PropTypes.string.isRequired,
     action: PropTypes.func.isRequired
-  }).isRequired,
-  enabled: PropTypes.bool
+  }).isRequired
 };
 
-export default RenderStep;
+export default React.memo(RenderStep, (current, nextProps) => (current.message === nextProps.message && current.next === nextProps.next));
