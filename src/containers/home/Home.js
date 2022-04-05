@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
 import { Helmet } from 'react-helmet';
 import { name, description } from '../../config/projectConfig';
 import HomePage from './HomePage';
