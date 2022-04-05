@@ -39,6 +39,8 @@
   "name": "Name",
   "title.tasks": "Tasks",
   "title.connected.integrations": "Connected Integrations",
+  "title.available.integrations": "Available Integrations",
+  "title.channels": "Channels",
   "home.salut": "Hi! Let's setup Ebanux app!",
   "home.what.is.next": "What's next?",
   "home.step": "Step",
