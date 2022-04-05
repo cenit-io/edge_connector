@@ -1,4 +1,4 @@
-import { themes } from '../config/config';
+import { headerHeight, themes } from '../config/config';
 import { primaryColor as lightPrimaryColor } from './lightMode';
 import { primaryColor as darkPrimaryColor } from './darkMode';
 
@@ -16,7 +16,7 @@ const getTheme = (mode = themes.light) => {
       MuiToolbar: {
         styleOverrides: {
           root: {
-            minHeight: "50px !important"
+            minHeight: `${headerHeight}px !important`
           }
         }
       },

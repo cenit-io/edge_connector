@@ -5,8 +5,9 @@ import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 
 import MainMenu from './mainMenu/MainMenu';
-import { drawerWidth } from '../../../config/config';
 import MainMenuFooter from './mainMenuFooter/MainMenuFooter';
+import { drawerWidth, headerHeight } from '../../../config/config';
+
 
 const SideBar = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
   <Drawer
@@ -26,7 +27,7 @@ const SideBar = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
       overflow: 'auto',
       display: 'flex',
       flexDirection: 'column',
-      minHeight: 'calc(100vh - 50px)'
+      minHeight: `calc(100vh - ${headerHeight}px)`
     }}>
       <MainMenu dense={isWideDevice} />
       <MainMenuFooter />
