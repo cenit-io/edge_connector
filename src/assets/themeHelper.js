@@ -23,8 +23,9 @@ const getTheme = (mode = themes.light) => {
       MuiListItem: {
         styleOverrides: {
           root: {
-            borderRadius: "0px 40px 40px 0px",
-            width: "calc(100% - 5px)"
+            marginLeft: "5px",
+            borderRadius: "10px",
+            width: "calc(100% - 10px)"
           }
         }
       },
