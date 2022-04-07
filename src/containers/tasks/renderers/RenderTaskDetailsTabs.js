@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Stack from '@mui/material/Stack';
 import { FormattedMessage } from 'react-intl';
-import { Typography } from '@mui/material';
-
-import RenderChip from '../../../components/showData/RenderChip';
-import { dateHandler } from '../../../utils/generalFunctions';
+import RenderTabExecutions from './tabs/RenderTabExecutions';
+import RenderTabScheduler from './tabs/RenderTabScheduler';
+import RenderTabNotifications from './tabs/RenderTabsNotifications';
 
 const RenderTaskDetailsTabs = ({ data }) => {
 
@@ -26,36 +24,9 @@ const RenderTaskDetailsTabs = ({ data }) => {
         <Tab label={<FormattedMessage id="tasks.notifications" />} />
       </Tabs>
       <Box sx={{ width: 'calc(100% - 4px)', ml: '2px', mt: '-6px', border: theme => `solid 1px ${theme.palette.primary.main}`, p: 2 }}>
-        {selected === 0 && (
-          <Stack spacing={2}>
-            <Box sx={{ display: 'flex' }}>
-              <Typography sx={{ fontWeight: 'bold' }}>
-                <FormattedMessage id="common.status" />:
-              </Typography>
-              <RenderChip status={data.status} styles={{ ml: '10px' }} />
-            </Box>
-            <Stack direction="row" spacing={2}>
-              <Box sx={{ display: 'flex' }}>
-                <Typography sx={{ fontWeight: 'bold' }}>
-                  <FormattedMessage id="tasks.start.date" />:
-                </Typography>
-                <Typography sx={{ ml: '10px' }}>
-                  {dateHandler(data.created_at)}
-                </Typography>
-              </Box>
-              <Box sx={{ display: 'flex' }}>
-                <Typography sx={{ fontWeight: 'bold' }}>
-                  <FormattedMessage id="tasks.complete.date" />:
-                </Typography>
-                <Typography sx={{ ml: '10px' }}>
-                  {dateHandler(data.updated_at)}
-                </Typography>
-              </Box>
-            </Stack>
-          </Stack>
-        )}
-        {selected === 1 && 'Second'}
-        {selected === 2 && 'Third'}
+        {selected === 0 && <RenderTabExecutions data={data} />}
+        {selected === 1 && <RenderTabScheduler data={data} />}
+        {selected === 2 && <RenderTabNotifications data={data} />}
       </Box>
     </>
   );
