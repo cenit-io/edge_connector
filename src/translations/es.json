@@ -57,7 +57,7 @@
   "home.step.3.btn": "Obtener suscripción",
   "home.step.4": "Configure los flujos de su integración tales como importr órdenes, productos y sincronización de inventario. Puede seleccionar los flujos predefinidos o adecuarlos a sus necesidades.",
   "home.step.4.next": "Haga click en el botón \"Crear flujos\" para configurar los flujos necesarios en su integración.",
-  "home.step.4.btn": "Create workflows",
+  "home.step.4.btn": "Crear flujos",
   "tooltip.install": "Instalar",
   "tooltip.uninstall": "Desinstalar",
   "tooltip.authorized": "Autorizada",
@@ -66,5 +66,6 @@
   "tasks.scheduler": "Planificador",
   "tasks.notifications": "Notificaciones",
   "tasks.start.date": "Fecha de inicio",
-  "tasks.complete.date": "Fecha de completamiento"
+  "tasks.complete.date": "Fecha de completamiento",
+  "tasks.time": "Tiempo"
 }

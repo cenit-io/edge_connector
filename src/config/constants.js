@@ -4,4 +4,6 @@ export const SEVERITY = {
   warning: 'warning'
 }
 
+export const ALL = 'all';
+
 export default SEVERITY;

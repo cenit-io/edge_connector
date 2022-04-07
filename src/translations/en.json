@@ -66,5 +66,6 @@
   "tasks.scheduler": "Scheduler",
   "tasks.notifications": "Notifications",
   "tasks.start.date": "Start date",
-  "tasks.complete.date": "Complete date"
+  "tasks.complete.date": "Complete date",
+  "tasks.time": "Time"
 }

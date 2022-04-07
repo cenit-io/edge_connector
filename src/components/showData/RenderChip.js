@@ -9,7 +9,7 @@ const RenderChip = ({ status, styles }) => (
     label={capitalize(status)}
     color={status === 'completed' ? 'success'
       : (status === 'pending' ? 'warning' : (status === 'inactive' ? 'default' : 'error'))}
-    sx={{ ...styles, color: 'white' }}
+    sx={{ ...styles, color: 'white', width: 'fit-content' }}
   />
 );
 
