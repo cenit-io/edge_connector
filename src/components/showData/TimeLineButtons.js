@@ -12,7 +12,7 @@ const TimeLineButtons = ({
 }) => (
   <Box {...other}>
     {topMessage && <Typography sx={{ fontWeight: 'bold', mb: '5px' }}>{topMessage}</Typography>}
-    <Stack direction="row" spacing={2}>
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
       {data.map(x => (
         <Button
           size="small"
