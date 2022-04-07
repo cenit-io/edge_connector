@@ -3,6 +3,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import ReplayIcon from '@mui/icons-material/Replay';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -13,6 +14,7 @@ import Loading from '../../components/loading/Loading';
 import CustomizedSnackbar from '../../components/alert/CustomizedSnackbar';
 import TaskWatcher from '../../components/tasks/TaskWatcher';
 import { getTasks, retryTask } from '../../api/tasks';
+import RenderTaskDetails from './renderers/RenderTaskDetails';
 
 const getStatusColor = status => {
     switch (status) {
@@ -38,6 +40,8 @@ export default function TaskList() {
 
     const [loadingOnRequest, setLoadingOnRequest] = React.useState(false);
     const [backgroundTasks, setBackgroundTasks] = React.useState([]);
+
+    const [openDetails, setOpenDetails] = useState(null);
 
     const [snackbar, setSnackbar] = React.useState({
         open: false,
@@ -143,6 +147,17 @@ export default function TaskList() {
                             <ReplayIcon />
                         </IconButton>
                     </Tooltip>
+                    <Tooltip title="Details">
+                        <IconButton
+                            aria-label="details"
+                            size="small"
+                            onClick={() => {
+                                setOpenDetails({ row });
+                            }}
+                        >
+                            <VisibilityOutlinedIcon />
+                        </IconButton>
+                    </Tooltip>
                 </div>
             )
         }
@@ -170,26 +185,33 @@ export default function TaskList() {
         return null;
       };
 
+    
+    const closeDetails = React.useCallback(() => {
+        setOpenDetails(null);
+    }, []);
+
 
     return (
         <div>
             <PageHeader title={title} />
             {isLoading || loadingOnRequest ? <Loading /> : null}
-            <EnhancedTable
-                rows={tasks?.data}
-                rowCount={tasks?.pagination.total}
-                headCells={headCells}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChange={handleTableChange}
-            />
-            <CustomizedSnackbar
-                open={snackbar.open}
-                severity={snackbar.severity}
-                onClose={handleClose}
-                message={snackbar.message}
-                autoHideDuration={snackbar.autoHideDuration}
-            />
+            {!openDetails ? (<>
+                <EnhancedTable
+                    rows={tasks?.data}
+                    rowCount={tasks?.pagination.total}
+                    headCells={headCells}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChange={handleTableChange}
+                />
+                <CustomizedSnackbar
+                    open={snackbar.open}
+                    severity={snackbar.severity}
+                    onClose={handleClose}
+                    message={snackbar.message}
+                    autoHideDuration={snackbar.autoHideDuration}
+                />
+            </>) : <RenderTaskDetails data={openDetails} goBack={closeDetails} />}
             <TaskWatcher onCheckStatus={handleOnCheckTask} onClose={handleOnCloseTask} tasks={backgroundTasks} />
         </div>
     )
