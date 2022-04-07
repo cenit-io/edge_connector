@@ -1,12 +1,13 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import Box from "@mui/material/Box";
-import Icon from "@mui/material/Icon";
+import React from 'react';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
+import Icon from '@mui/material/Icon';
 import DoNotTouchIcon from '@mui/icons-material/DoNotTouch';
-import { useIntl } from "react-intl";
-import { Helmet } from "react-helmet";
-import { name, description } from "../../config/projectConfig";
+import { useIntl } from 'react-intl';
+import { Helmet } from 'react-helmet';
+
+import { name, description } from '../../config/projectConfig';
 
 const NotFound = () => {
   const intl = useIntl();

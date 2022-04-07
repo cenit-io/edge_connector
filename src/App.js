@@ -1,12 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-import GlobalContext from "./config/GlobalContext";
-import config from "./config/config";
-import Application from "./containers/application/Application";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { IntlProvider } from "react-intl";
-import getTheme from "./assets/themeHelper";
+import React, { useEffect, useState } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { IntlProvider } from 'react-intl';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+import GlobalContext from './config/GlobalContext';
+import config from './config/config';
+import { ProvideAuth } from './utils/auth';
+import Application from './containers/application/Application';
+import getTheme from './assets/themeHelper';
+
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 
 const messageLoader = {
   en: () => import("./translations/en.json"),
@@ -21,6 +28,8 @@ function App() {
   const { locale, theme } = mainConfig;
 
   const mainTheme = createTheme(getTheme(theme));
+
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     messageLoader[locale]()
@@ -45,7 +54,11 @@ function App() {
         setMainConfig
       }}>
         <IntlProvider locale={locale} messages={messages}>
-          <Application />
+          <QueryClientProvider client={queryClient}>
+            <ProvideAuth>
+              <Application />
+            </ProvideAuth>
+          </QueryClientProvider>
         </IntlProvider>
       </GlobalContext.Provider>
     </ThemeProvider>

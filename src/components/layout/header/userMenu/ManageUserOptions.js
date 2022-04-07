@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Drawer from "@mui/material/Drawer";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { drawerWidth } from "../../../../config/config";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Drawer from '@mui/material/Drawer';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { drawerWidth } from '../../../../config/config';
 
 const ManageUserOptions = ({ open, handleClose }) => (
   <Drawer
