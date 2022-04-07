@@ -16,6 +16,7 @@
   "page.not.found.error": "Error 404: La URL solicitada no se encuentra o no está disponible",
   "go.back.home": "Regresar al inicio",
   "actions.add": "Adicionar",
+  "actions.back": "Atrás",
   "actions.cancel": "Cancelar",
   "actions.save": "Salvar",
   "components.layout.header.userMenu.login": "Iniciar sesión",
@@ -30,6 +31,7 @@
   "common.hint.enter.here": "Entre aquí {item}",
   "common.description": "Descripción",
   "common.created.at": "Creado",
+  "common.updated.at": "Actualizado",
   "common.progress": "Progreso",
   "common.status": "Estado",
   "common.actions": "Acciones",
@@ -59,5 +61,10 @@
   "tooltip.install": "Instalar",
   "tooltip.uninstall": "Desinstalar",
   "tooltip.authorized": "Autorizada",
-  "tooltip.noAuthorized": "No autorizada"
+  "tooltip.noAuthorized": "No autorizada",
+  "tasks.executions": "Ejecuciones",
+  "tasks.scheduler": "Planificador",
+  "tasks.notifications": "Notificaciones",
+  "tasks.start.date": "Fecha de inicio",
+  "tasks.complete.date": "Fecha de completamiento"
 }
