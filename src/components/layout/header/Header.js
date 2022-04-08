@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
@@ -7,20 +7,16 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 
-import GlobalContext from '../../../config/GlobalContext';
 import UserMenu from './userMenu/UserMenu';
-import { drawerWidth, themes } from '../../../config/config';
+import { drawerWidth } from '../../../config/config';
 
-const Header = ({ isWideDevice, handleDrawerToggle, openDrawer }) => {
-  const { config } = useContext(GlobalContext);
-
-  return (
+const Header = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
   <AppBar position="fixed" sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}>
     <Toolbar>
       {isWideDevice && openDrawer && (
         <Box sx={{ width: theme => `calc(${drawerWidth}px - ${theme.spacing(4)})`, display: 'flex' }}>
           <Box
-            component="img" alt="EBANUX" src={`/icons/ebanux${config.theme === themes.light ? '_white' : ''}.svg`}
+            component="img" alt="EBANUX" src="/icons/ebanux_white.svg"
             sx={{ width: '100px' }}
           />
         </Box>
@@ -38,7 +34,6 @@ const Header = ({ isWideDevice, handleDrawerToggle, openDrawer }) => {
     </Toolbar>
   </AppBar>
 );
-}
 
 Header.propTypes = {
   handleDrawerToggle: PropTypes.func.isRequired,
