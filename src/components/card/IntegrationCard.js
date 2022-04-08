@@ -13,7 +13,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -28,9 +27,11 @@ function IntegrationCard({ itemData, type, onDispatchAction }) {
     const renderChannelContent = () => (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Title name={itemData.title} />
-            <Button size="small" endIcon={<AddIcon />} onClick={() => handleDispatchAction('add-integration')} variant="outlined">
-                <FormattedMessage id="actions.add" />
-            </Button>
+            <Tooltip title={<FormattedMessage id="actions.add" />}>
+                <IconButton size="small" onClick={() => handleDispatchAction('add-integration')}>
+                    <AddIcon fontSize="small" color="primary" />
+                </IconButton>
+            </Tooltip>
         </div>
     );
 
