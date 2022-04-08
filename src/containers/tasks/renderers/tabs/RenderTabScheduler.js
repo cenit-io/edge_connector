@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -6,9 +6,10 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 
 import { FormattedMessage } from 'react-intl';
+import { capitalize } from '@mui/material';
 
 import RenderChip from '../../../../components/showData/RenderChip';
-import { dateHandler } from '../../../../utils/generalFunctions';
+import { dateHandler, isEmpty } from '../../../../utils/generalFunctions';
 import TimeLineButtons from '../../../../components/showData/TimeLineButtons';
 import { ALL } from '../../../../config/constants';
 
@@ -27,48 +28,55 @@ const timelineData = {
 const daysOfWeekData = {
   top: 'Days of week',
   data: [
-    { value: 'mon', label: 'MON' },
-    { value: 'tue', label: 'TUE' },
-    { value: 'wed', label: 'WED' },
-    { value: 'thu', label: 'THU' },
-    { value: 'fri', label: 'FRI' },
-    { value: 'sat', label: 'SAT' },
-    { value: 'sun', label: 'SUN' },
-    { value: ALL, label: 'EVERYDAY' },
+    { value: 'Mon', label: 'Mon' },
+    { value: 'Tue', label: 'Tue' },
+    { value: 'Wed', label: 'Wed' },
+    { value: 'Thu', label: 'Thu' },
+    { value: 'Fri', label: 'Fri' },
+    { value: 'Sat', label: 'Sat' },
+    { value: 'Sun', label: 'Sun' }
+  ]
+}
+
+const weeksOfMontData = {
+  top: 'Weeks of month',
+  data: [
+    { value: 'First', label: 'First' },
+    { value: 'Second', label: 'Second' },
+    { value: 'Third', label: 'Third' },
+    { value: 'Fourth', label: 'Fourth' },
+    { value: 'Last', label: 'Last' }
+  ]
+};
+
+const monthsOfYearData = {
+  top: 'Months of year',
+  data: [
+    { value: 'Jan', label: 'Jan' },
+    { value: 'Feb', label: 'Feb' },
+    { value: 'Mar', label: 'Mar' },
+    { value: 'Apr', label: 'Apr' },
+    { value: 'May', label: 'May' },
+    { value: 'Jun', label: 'Jun' },
+    { value: 'Jul', label: 'Jul' },
+    { value: 'Aug', label: 'Aug' },
+    { value: 'Sep', label: 'Sep' },
+    { value: 'Oct', label: 'Oct' },
+    { value: 'Nov', label: 'Nov' },
+    { value: 'Dec', label: 'Dec' }
   ]
 }
 
 const RenderTabScheduler = ({ data }) => {
-  const [timeline, setTimeline] = useState([]);
-  const [dayOfWeek, setDayOfWeek] = useState([]);
+  if (isEmpty(data)) {
+    return (
+      <Typography><FormattedMessage id="common.no.data" /></Typography>
+    );
+  }
 
-  const handleTimeLine = useCallback(payload => {
-    setTimeline(payload === timeline[0] ? [] : [payload]);
-  }, [timeline]);
-
-  const handleDayOfWeek = useCallback(payload => {
-    let selection = [...dayOfWeek];
-    if (payload === ALL) {
-      if (selection.length !== (daysOfWeekData.data.length - 1)) {
-        selection = daysOfWeekData.data.reduce((acc, x) => {
-          if (x.value !== ALL) {
-            acc.push(x.value);
-          }
-          return acc;
-        }, []);
-      } else {
-        selection = [];
-      }
-    } else {
-      if (selection.includes(payload)) {
-        const index = selection.indexOf(payload);
-        selection.splice(index, 1);
-      } else {
-        selection.push(payload);
-      }
-    }
-    setDayOfWeek(selection);
-  }, [dayOfWeek]);
+  if (typeof data === 'string') {
+    return <Typography>{capitalize(data)}</Typography>
+  }
 
   return (
     <>
@@ -106,25 +114,45 @@ const RenderTabScheduler = ({ data }) => {
       <Divider sx={{ m: '10px 0' }} />
       <Stack spacing={2}>
         <TimeLineButtons
-          data={timelineData.data}
-          topMessage={timelineData.top}
-          handleSelect={handleTimeLine}
-          selected={timeline}
-        />
-        <TimeLineButtons
           sx={{ mt: '10px' }}
           data={daysOfWeekData.data}
           topMessage={daysOfWeekData.top}
-          selected={dayOfWeek}
-          handleSelect={handleDayOfWeek}
+          selected={data.days_of_week}
+        />
+        <TimeLineButtons
+          sx={{ mt: '10px' }}
+          data={weeksOfMontData.data}
+          topMessage={weeksOfMontData.top}
+          selected={data.weeks_of_month}
+        />
+        <TimeLineButtons
+          sx={{ mt: '10px' }}
+          data={monthsOfYearData.data}
+          topMessage={monthsOfYearData.top}
+          selected={data.months_of_year}
         />
       </Stack>
     </>
   );
 }
 
+RenderTabScheduler.defaltProps = {
+  data: undefined
+};
+
 RenderTabScheduler.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      active: PropTypes.bool,
+      start_date: PropTypes.string,
+      end_date: PropTypes.string,
+      time: PropTypes.string,
+      days_of_week: PropTypes.arrayOf(PropTypes.string),
+      weeks_of_month: PropTypes.arrayOf(PropTypes.string),
+      months_of_year: PropTypes.arrayOf(PropTypes.string)
+    })
+  ])
 };
 
 export default RenderTabScheduler;

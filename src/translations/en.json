@@ -35,6 +35,7 @@
   "common.progress": "Progress",
   "common.status": "Status",
   "common.actions": "Actions",
+  "common.type": "Type",
   "add.integration": "Add integration",
   "authorized": "Authorized",
   "channel": "Channel",
@@ -67,5 +68,6 @@
   "tasks.notifications": "Notifications",
   "tasks.start.date": "Start date",
   "tasks.complete.date": "Complete date",
-  "tasks.time": "Time"
+  "tasks.time": "Time",
+  "tasks.message": "Message"
 }
