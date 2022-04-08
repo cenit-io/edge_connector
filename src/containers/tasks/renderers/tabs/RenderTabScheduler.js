@@ -11,19 +11,6 @@ import { capitalize } from '@mui/material';
 import RenderChip from '../../../../components/showData/RenderChip';
 import { dateHandler, isEmpty } from '../../../../utils/generalFunctions';
 import TimeLineButtons from '../../../../components/showData/TimeLineButtons';
-import { ALL } from '../../../../config/constants';
-
-const timelineData = {
-  top: 'Timeline in the day',
-  data: [
-    { value: '15m', label: 'Every 15 mins' },
-    { value: '30m', label: 'Every 30 mins' },
-    { value: '1h', label: 'Every hour' },
-    { value: '3h', label: 'Every 3 hours' },
-    { value: '6h', label: 'Every 6 hours' },
-    { value: '12h', label: 'Every 12 hours' }
-  ]
-}
 
 const daysOfWeekData = {
   top: 'Days of week',
