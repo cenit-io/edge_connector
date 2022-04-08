@@ -76,7 +76,7 @@ const RenderTabScheduler = ({ data }) => {
                 <FormattedMessage id="tasks.start.date" />:
               </Typography>
               <Typography sx={{ ml: '10px' }}>
-                {dateHandler(data.created_at)}
+                {dateHandler(data.start_date)}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex' }}>
@@ -84,7 +84,7 @@ const RenderTabScheduler = ({ data }) => {
                 <FormattedMessage id="tasks.time" />:
               </Typography>
               <Typography sx={{ ml: '10px' }}>
-                {dateHandler(data.created_at)}
+                {data.time}
               </Typography>
             </Box>
           </Stack>
@@ -93,7 +93,7 @@ const RenderTabScheduler = ({ data }) => {
               <FormattedMessage id="tasks.complete.date" />:
             </Typography>
             <Typography sx={{ ml: '10px' }}>
-              {dateHandler(data.updated_at)}
+              {dateHandler(data.end_date)}
             </Typography>
           </Box>
         </Stack>
