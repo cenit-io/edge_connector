@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -11,20 +11,38 @@ import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
+import { useQuery } from 'react-query';
 import { FormattedMessage } from 'react-intl';
 import Progress from '../../../components/showData/Progress';
-import { dateHandler } from '../../../utils/generalFunctions';
+import Loading from '../../../components/loading/Loading';
+import { dateHandler, isEmpty } from '../../../utils/generalFunctions';
 import RenderTaskDetailsTabs from './RenderTaskDetailsTabs';
 import RenderChip from '../../../components/showData/RenderChip';
+import { getTask } from '../../../api/tasks';
+import CustomizedSnackbar from '../../../components/alert/CustomizedSnackbar';
 
 const fontWeight = { fontWeight: 'bold' };
 const displayFlex = { display: 'flex' };
 
 const RenderTaskDetails = ({ data, goBack }) => {
+  const [errorMessage, setMessage] = useState(null);
   const { row } = data;
+
+  const { isLoading, error, data: task } = useQuery('task', () => getTask(row.id));
+
+  const handleCloseMessage = useCallback(() => {
+    setMessage(null);
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      setMessage({ message: `Error: ${error.message}` });
+    }
+  }, [error]);
 
   return (
     <>
+      {isLoading && <Loading />}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Button size="small" onClick={goBack} variant="contained">
           <ArrowBackIcon fontSize="small" />
@@ -69,8 +87,15 @@ const RenderTaskDetails = ({ data, goBack }) => {
         </Grid>
       </Paper>
       <Paper elevation={2} sx={{ p: 2, mt: '5px' }}>
-        <RenderTaskDetailsTabs data={row} />
+        {!isLoading && !isEmpty(task?.data) ? <RenderTaskDetailsTabs task={task?.data} /> : (
+          <Typography>
+            <FormattedMessage id={!task?.data ? "common.please.wait" : "common.no.data" } />
+          </Typography>
+        )}
       </Paper>
+      {errorMessage && (
+        <CustomizedSnackbar message={errorMessage.message} open onClose={handleCloseMessage} />
+      )}
     </>
   );
 };
