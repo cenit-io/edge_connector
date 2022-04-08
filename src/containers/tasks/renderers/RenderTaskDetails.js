@@ -27,8 +27,9 @@ const displayFlex = { display: 'flex' };
 const RenderTaskDetails = ({ data, goBack }) => {
   const [errorMessage, setMessage] = useState(null);
   const { row } = data;
+  const { id } = row;
 
-  const { isLoading, error, data: task } = useQuery('task', () => getTask(row.id));
+  const { isLoading, error, data: task } = useQuery(['taskDetails', id], () => getTask(id));
 
   const handleCloseMessage = useCallback(() => {
     setMessage(null);
