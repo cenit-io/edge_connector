@@ -24,12 +24,12 @@ const RenderStep = ({
       flexGrow: 1,
       '& .MuiAlert-message': { m: 'auto' }
     }}>
-        <Typography sx={{ textTransform: 'uppercase' }} variant="caption">
-          <FormattedMessage id="home.step" />
-        </Typography>
-        <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-          {index + 1}
-        </Typography>
+      <Typography sx={{ textTransform: 'uppercase' }} variant="caption">
+        <FormattedMessage id="home.step" />
+      </Typography>
+      <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+        {index + 1}
+      </Typography>
     </Alert>
   );
 
@@ -40,17 +40,18 @@ const RenderStep = ({
           {displayStep()}
         </Box>
         <Box sx={{ width: '100%', display: matches ? 'flex' : undefined }}>
-          <Box sx={{ 
-            width: '100%', 
-            display: 'flex', 
-            flexDirection: 'column' }}>
+          <Box sx={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
             <Typography>{message}</Typography>
             <Button
               onClick={handleAction}
               variant="outlined"
               size="small"
-              sx={{ 
-                mt: 'auto', 
+              sx={{
+                mt: 'auto',
                 width: 'max-content',
                 '@media (max-width: 600px)': {
                   width: '175px'

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import Box from '@mui/material/Box';
