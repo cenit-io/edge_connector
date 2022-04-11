@@ -2,7 +2,7 @@ import React, {
   useCallback, useEffect, useRef, useState
 } from 'react';
 import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
+import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
@@ -13,7 +13,6 @@ const MyTableRow = ({
   children, handPointer, options, ...others
 }) => {
   const [show, setShow] = useState(false);
-
   const componentId = useRef(genId());
   const rowRef = useRef(null);
 
@@ -35,48 +34,58 @@ const MyTableRow = ({
     componentId.current = genId();
   }, []);
 
-  const renderBox = useCallback(() => (
-    <Box
-      id={componentId.current}
-      onMouseLeave={handleLeave}
-      onMouseEnter={handleShow}
-      sx={{
-        width: `${rowRef.current.offsetWidth}px`,
-        mt: '-32px',
-        position: 'absolute',
-        textAlign: 'right',
-        cursor: handPointer ? 'pointer' : undefined,
-        backgroundColor: 'rgba(66, 118, 152, 0.08)',
-        borderRadius: '5px'
-      }}
-    >
-      {options.map(x => (
-        <Tooltip title={x.tip}>
-          <IconButton
-            onClick={x.action}
-            size='small'
-            color="primary"
-          >
-            {x.icon}
-          </IconButton>
-        </Tooltip>
-      ))
-      }
-    </Box>
-  ), []);
+  const renderOptions = useCallback(() => {
+    let height = rowRef.current.clientHeight;
+    height = height - (height > 50 ? 10 : 1);
+
+    return (
+      <TableRow
+        id={componentId.current}
+        onMouseLeave={handleLeave}
+        onMouseEnter={handleShow}
+        sx={{
+          position: 'absolute',
+          marginTop: `-${height}px`,
+          width: '100%'
+        }}>
+        <TableCell
+          colSpan="100%"
+          sx={{
+            width: '100%',
+            border: 'none',
+            display: 'block',
+            textAlign: 'end',
+            padding: 'unset'
+          }}
+        >
+          {options.map(x => (
+            <Tooltip title={x.tip}>
+              <IconButton
+                onClick={x.action}
+                size='small'
+                color="primary"
+              >
+                {x.icon}
+              </IconButton>
+            </Tooltip>
+          ))}
+        </TableCell>
+      </TableRow>
+    )
+  }, []);
 
   return (
     <>
       <TableRow
+        ref={rowRef}
         onMouseEnter={handleShow}
         onMouseLeave={handleHide}
         style={handPointer && { cursor: 'pointer' }}
-        ref={rowRef}
         {...others}
       >
         {children}
       </TableRow>
-      {show && renderBox()}
+      {show && renderOptions()}
     </>
   );
 };

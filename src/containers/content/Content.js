@@ -54,7 +54,7 @@ const Content = () => {
               <TableCell align="right">Protein&nbsp;(g)</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody sx={{ position: 'relative', width: '100%' }}>
             {rows.map(row => (
               <MyTableRow
                 handPointer
