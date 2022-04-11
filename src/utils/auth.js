@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 import React, { useState, useEffect, useContext, createContext } from 'react';
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
 export const getSession = () => {
@@ -87,3 +87,7 @@ function useProvideAuth() {
     signOut
   };
 }
+
+ProvideAuth.propTypes = {
+  children: PropTypes.node.isRequired
+};

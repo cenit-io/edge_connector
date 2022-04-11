@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import DownloadIcon from '@mui/icons-material/Download';
@@ -18,6 +17,10 @@ import IconButton from '@mui/material/IconButton';
 import { FormattedMessage } from 'react-intl';
 
 const Title = ({ name }) => (<Typography sx={{ fontWeight: 'bold' }} component="div">{name}</Typography>);
+
+Title.propTypes = {
+  name: PropTypes.string.isRequired
+};
 
 function IntegrationCard({ itemData, type, onDispatchAction }) {
 
@@ -118,6 +121,7 @@ IntegrationCard.propTypes = {
     logo: PropTypes.string.isRequired,
     channel_title: PropTypes.string,
     authorized: PropTypes.bool,
+    title: PropTypes.string,
     summary: PropTypes.string,
     status: PropTypes.string
   }),

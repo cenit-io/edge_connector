@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -57,8 +56,9 @@ function EnhancedTableHead(props) {
 EnhancedTableHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
-  withCheckboxSelection: PropTypes.bool,
-  rowCount: PropTypes.number.isRequired
+  headCells: PropTypes.array.isRequired,
+  rowCount: PropTypes.number.isRequired,
+  withCheckboxSelection: PropTypes.bool
 };
 
 EnhancedTableHead.propTypes = {
