@@ -36,6 +36,36 @@ const getTheme = (mode = themes.light) => {
             color: 'white'
           }
         }
+      },
+      MuiTabs: {
+        styleOverrides: {
+          root: {
+            padding: '2px'
+          },
+          indicator: {
+            display: 'none'
+          },
+          flexContainer: {
+            borderBottom: `solid 1px ${primaryColor}`
+          }
+        }
+      },
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            border: `solid 1px ${primaryColor}`,
+            borderRadius: '5px 5px 0 0',
+            padding: '2px 16px',
+            borderBottomStyle: 'none',
+            height: '40px',
+            minHeight: '40px',
+            '&.Mui-selected': {
+              fontWeight: 'bold',
+              backgroundColor: primaryColor,
+              color: 'white'
+            }
+          }
+        }
       }
     }
   }

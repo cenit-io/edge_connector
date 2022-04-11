@@ -16,6 +16,7 @@
   "page.not.found.error": "Error 404: The requested URL was not found or is not available",
   "go.back.home": "Go back to home",
   "actions.add": "Add",
+  "actions.back": "Back",
   "actions.cancel": "Cancel",
   "actions.save": "Save",
   "components.layout.header.userMenu.login": "Login",
@@ -30,9 +31,11 @@
   "common.hint.enter.here": "Enter {item} here",
   "common.description": "Description",
   "common.created.at": "Created at",
+  "common.updated.at": "Updated at",
   "common.progress": "Progress",
   "common.status": "Status",
   "common.actions": "Actions",
+  "common.type": "Type",
   "add.integration": "Add integration",
   "authorized": "Authorized",
   "channel": "Channel",
@@ -59,5 +62,12 @@
   "tooltip.install": "Install",
   "tooltip.uninstall": "Uninstall",
   "tooltip.authorized": "Authorized",
-  "tooltip.noAuthorized": "No authorized"
+  "tooltip.noAuthorized": "No authorized",
+  "tasks.executions": "Executions",
+  "tasks.scheduler": "Scheduler",
+  "tasks.notifications": "Notifications",
+  "tasks.start.date": "Start date",
+  "tasks.complete.date": "Complete date",
+  "tasks.time": "Time",
+  "tasks.message": "Message"
 }

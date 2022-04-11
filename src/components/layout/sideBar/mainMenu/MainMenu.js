@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { IntlProvider } from 'react-intl';
@@ -12,7 +11,7 @@ import getTheme from './assets/themeHelper';
 
 import {
   QueryClient,
-  QueryClientProvider,
+  QueryClientProvider
 } from 'react-query';
 
 const messageLoader = {

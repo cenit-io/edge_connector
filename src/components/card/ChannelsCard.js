@@ -2,11 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { FormattedMessage } from 'react-intl';
 function ChannelsCard({ actionFunc, itemData }) {
@@ -28,10 +29,11 @@ function ChannelsCard({ actionFunc, itemData }) {
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography sx={{ fontStyle: 'italic' }}>{itemData.title}</Typography>
-        <Button size="small" onClick={beforeDispatchAction} variant="outlined">
-          <FormattedMessage id="actions.add" />
-          <AddIcon fontSize="small" />
-        </Button>
+        <Tooltip title={<FormattedMessage id="actions.add" />}>
+          <IconButton size="small" onClick={beforeDispatchAction}>
+            <AddIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   );

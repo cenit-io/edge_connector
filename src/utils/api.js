@@ -30,6 +30,7 @@ export const getHeaders = (url, redirectUri) => {
 };
 
 const API = axios.create({
+  // eslint-disable-next-line no-undef
   baseURL: process.env.REACT_APP_ECAPI_URL
 });
 
