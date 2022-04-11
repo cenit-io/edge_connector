@@ -35,37 +35,35 @@ const MyTableRow = ({
     componentId.current = genId();
   }, []);
 
-  const renderBox = useCallback(() => {
-    return (
-      <Box
-        id={componentId.current}
-        onMouseLeave={handleLeave}
-        sx={{
-          width: `${rowRef.current.offsetWidth}px`,
-          mt: '-32px',
-          position: 'absolute',
-          textAlign: 'right',
-          cursor: handPointer ? 'pointer' : undefined,
-          backgroundColor: 'rgba(66, 118, 152, 0.08)',
-          borderRadius: '5px'
-        }}
-      >
-        {options.map(x => (
-          <Tooltip title={x.tip}>
-            <IconButton
-              onClick={x.action}
-              size='small'
-              color="primary"
-
-            >
-              {x.icon}
-            </IconButton>
-          </Tooltip>
-        ))
-        }
-      </Box>
-    );
-  }, []);
+  const renderBox = useCallback(() => (
+    <Box
+      id={componentId.current}
+      onMouseLeave={handleLeave}
+      onMouseEnter={handleShow}
+      sx={{
+        width: `${rowRef.current.offsetWidth}px`,
+        mt: '-32px',
+        position: 'absolute',
+        textAlign: 'right',
+        cursor: handPointer ? 'pointer' : undefined,
+        backgroundColor: 'rgba(66, 118, 152, 0.08)',
+        borderRadius: '5px'
+      }}
+    >
+      {options.map(x => (
+        <Tooltip title={x.tip}>
+          <IconButton
+            onClick={x.action}
+            size='small'
+            color="primary"
+          >
+            {x.icon}
+          </IconButton>
+        </Tooltip>
+      ))
+      }
+    </Box>
+  ), []);
 
   return (
     <>
