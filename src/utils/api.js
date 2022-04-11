@@ -4,6 +4,7 @@ import qs from 'query-string';
 import { getSession } from './auth';
 
 const API = axios.create({
+  // eslint-disable-next-line no-undef
   baseURL: process.env.REACT_APP_ECAPI_URL
 });
 

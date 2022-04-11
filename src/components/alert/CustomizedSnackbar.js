@@ -24,7 +24,7 @@ export default function CustomizedSnackbar({ open, severity, message, autoHideDu
       </Stack>
     </Portal>
   );
-};
+}
 
 CustomizedSnackbar.propTypes = {
   open: PropTypes.bool.isRequired,

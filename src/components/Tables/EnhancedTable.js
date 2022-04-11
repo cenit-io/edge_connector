@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -18,25 +19,27 @@ import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function EnhancedTableHead(props) {
-        
-  const { headCells, onSelectAllClick, numSelected, rowCount, withCheckboxSelection } = props;
+
+  const { 
+    headCells, onSelectAllClick, numSelected, rowCount, withCheckboxSelection 
+  } = props;
 
   return (
     <TableHead>
       <TableRow>
-          <TableCell padding="checkbox">
-        {withCheckboxSelection ? (
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              'aria-label': 'select all',
-            }}
-          />
+        <TableCell padding="checkbox">
+          {withCheckboxSelection ? (
+            <Checkbox
+              color="primary"
+              indeterminate={numSelected > 0 && numSelected < rowCount}
+              checked={rowCount > 0 && numSelected === rowCount}
+              onChange={onSelectAllClick}
+              inputProps={{
+                'aria-label': 'select all'
+              }}
+            />
           ) : null}
-          </TableCell>
+        </TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -55,11 +58,11 @@ EnhancedTableHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
   withCheckboxSelection: PropTypes.bool,
-  rowCount: PropTypes.number.isRequired,
+  rowCount: PropTypes.number.isRequired
 };
 
 EnhancedTableHead.propTypes = {
-  withCheckboxSelection: false,
+  withCheckboxSelection: false
 };
 
 const EnhancedTableToolbar = (props) => {
@@ -72,8 +75,8 @@ const EnhancedTableToolbar = (props) => {
         pr: { xs: 1, sm: 1 },
         ...(numSelected > 0 && {
           bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-        }),
+            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity)
+        })
       }}
     >
       {numSelected > 0 ? (
@@ -146,7 +149,7 @@ export default function EnhancedTable(props) {
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
+        selected.slice(selectedIndex + 1)
       );
     }
 
@@ -193,7 +196,7 @@ export default function EnhancedTable(props) {
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.slice().sort(getComparator(order, orderBy)) */}
-                {rows.slice(0, rowsPerPage)
+              {rows.slice(0, rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
@@ -214,7 +217,7 @@ export default function EnhancedTable(props) {
                             onClick={(event) => handleClick(event, row)}
                             checked={isItemSelected}
                             inputProps={{
-                              'aria-labelledby': labelId,
+                              'aria-labelledby': labelId
                             }}
                           />
                         ) : null}
@@ -249,7 +252,7 @@ EnhancedTable.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
   withCheckboxSelection: PropTypes.bool,
   selected: PropTypes.array,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 EnhancedTable.defaultProps = {
@@ -259,5 +262,5 @@ EnhancedTable.defaultProps = {
   rowCount: 0,
   withCheckboxSelection: false,
   selected: [],
-  onChange: () => {},
+  onChange: () => {}
 };
