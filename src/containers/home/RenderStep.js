@@ -10,17 +10,17 @@ import Typography from '@mui/material/Typography';
 import { FormattedMessage } from 'react-intl';
 
 const RenderStep = ({
-  action, next, index, message
+  btn, next, index, message, action
 }) => {
 
-  const handleAction = () => {
-    action.action();
+  const handleAction = e => {
+    action(`${e.target.name}`);
   };
 
   return (
     <Paper variant="outlined" sx={{ width: '100%', p: 2, mb: '10px' }}>
       <Box sx={{ display: 'flex' }}>
-        <Box sx={{ width: '65px', textAlign: 'center', mr: '10px', display: 'flex' }}>
+        <Box sx={{ textAlign: 'center', mr: '10px', display: 'flex' }}>
           <Alert icon={false} severity="info" sx={{
             flexGrow: 1,
             '& .MuiAlert-message': { m: 'auto' }
@@ -34,7 +34,6 @@ const RenderStep = ({
           </Alert>
         </Box>
         <Box sx={{
-          width: '100%',
           display: 'flex',
           '@media (max-width: 600px)': { display: 'block' }
         }}>
@@ -46,6 +45,7 @@ const RenderStep = ({
             <Typography>{message}</Typography>
             <Button
               onClick={handleAction}
+              name={index}
               variant="outlined"
               size="small"
               sx={{
@@ -54,13 +54,14 @@ const RenderStep = ({
                 '@media (max-width: 600px)': { width: '175px' }
               }}
             >
-              {action.btn}
+              {btn}
             </Button>
           </Box>  
           <Divider
             orientation="vertical"
             sx={{
-              m: '0 10px 0 10px'
+              m: '0 10px 0 10px',
+              '@media (max-width: 600px)': { display: 'none' }
             }}
           />
           <Box sx={{ width: '100%', '@media (max-width: 600px)': { mt: '10px' } }}>
@@ -77,10 +78,8 @@ RenderStep.propTypes = {
   index: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   next: PropTypes.string.isRequired,
-  action: PropTypes.shape({
-    btn: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired
-  }).isRequired
+  btn: PropTypes.string.isRequired,
+  action: PropTypes.func.isRequired
 };
 
 export default RenderStep;

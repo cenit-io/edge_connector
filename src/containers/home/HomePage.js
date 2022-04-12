@@ -14,21 +14,29 @@ const HomePage = () => {
     {
       message: <FormattedMessage id="home.step.1" />,
       next: <FormattedMessage id="home.step.1.next" />,
-      action: { btn: <FormattedMessage id="home.step.1.btn" />, action: () => { navigate('/integrations/available-integrations'); } }
+      btn: <FormattedMessage id="home.step.1.btn" />
     }, {
       message: <FormattedMessage id="home.step.2" />,
       next: <FormattedMessage id="home.step.2.next" />,
-      action: { btn: <FormattedMessage id="home.step.2.btn" />, action: () => { navigate('/integrations/connected-integrations'); } }
+      btn: <FormattedMessage id="home.step.2.btn" />
     }, {
       message: <FormattedMessage id="home.step.3" />,
       next: <FormattedMessage id="home.step.3.next" />,
-      action: { btn: <FormattedMessage id="home.step.3.btn" />, action: index => { console.log(index); } }
+      btn: <FormattedMessage id="home.step.3.btn" />
     }, {
       message: <FormattedMessage id="home.step.4" />,
       next: <FormattedMessage id="home.step.4.next" />,
-      action: { btn: <FormattedMessage id="home.step.4.btn" />, action: index => { console.log(index); } }
+      btn: <FormattedMessage id="home.step.4.btn" />
     }
   ];
+
+  const action = payload => {
+    if (payload === '0') {
+      navigate('/integrations/available-integrations');
+    } else if (payload === '1') {
+      navigate('/integrations/connected-integrations');
+    }
+  }
 
   return (
     <>
@@ -38,7 +46,8 @@ const HomePage = () => {
       </Box>
       {steps.map((stepItem, index) => (
         <RenderStep
-          action={stepItem.action}
+          btn={stepItem.btn}
+          action={action}
           next={stepItem.next}
           message={stepItem.message}
           index={index}
