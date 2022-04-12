@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import MainLayout from '../../components/layout/MainLayout';
 import Loading from '../../components/loading/Loading';
+import Home from '../home/Home';
 
-const HomeAsync = React.lazy(() => import('../home/Home'));
 const NotFoundAsync = React.lazy(() => import('../notFound/NotFound'));
 const ExampleAsync = React.lazy(() => import('../example/Example'));
 const AvailableIntegrationsAsync = React.lazy(() => import('../integrations/AvailableIntegrations'));
@@ -16,7 +16,7 @@ const Application = () => (
   <MainLayout>
     <Suspense fallback={<Loading />}>
       <Routes>
-        <Route index element={<HomeAsync />} />
+        <Route index element={<Home />} />
         <Route path="/example" element={<ExampleAsync />} />
         <Route path="/integrations/available-integrations" element={<AvailableIntegrationsAsync />} />
         <Route path="/integrations/channels" element={<ChannelsAsync />} />
