@@ -26,7 +26,7 @@ const RenderStep = ({
             '& .MuiAlert-message': { m: 'auto' }
           }}>
             <Typography sx={{ textTransform: 'uppercase' }} variant="caption">
-              <FormattedMessage id="home.step" />
+              <FormattedMessage id="home.step" defaultMessage="Step" />
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
               {index + 1}
@@ -56,7 +56,7 @@ const RenderStep = ({
             >
               {btn}
             </Button>
-          </Box>  
+          </Box>
           <Divider
             orientation="vertical"
             sx={{
@@ -65,7 +65,9 @@ const RenderStep = ({
             }}
           />
           <Box sx={{ width: '100%', '@media (max-width: 600px)': { mt: '10px' } }}>
-            <Typography sx={{ fontWeight: 'bold' }}><FormattedMessage id="home.what.is.next" /></Typography>
+            <Typography sx={{ fontWeight: 'bold' }}>
+              <FormattedMessage id="home.what.is.next" defaultMessage="Next" />
+            </Typography>
             <Typography>{next}</Typography>
           </Box>
         </Box>
@@ -76,9 +78,9 @@ const RenderStep = ({
 
 RenderStep.propTypes = {
   index: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
-  next: PropTypes.string.isRequired,
-  btn: PropTypes.string.isRequired,
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  next: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  btn: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   action: PropTypes.func.isRequired
 };
 

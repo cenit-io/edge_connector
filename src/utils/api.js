@@ -8,6 +8,7 @@ export const getHeaders = (url, redirectUri) => {
   const params = {};
   params.token = currentTenant.token;
   params.timestamp = Date.now();
+  // eslint-disable-next-line no-undef
   params.redirect_uri = redirectUri || process.env.REACT_APP_URL;
 
   // Join the service path and the ordered sequence of characters, excluding the quotes,

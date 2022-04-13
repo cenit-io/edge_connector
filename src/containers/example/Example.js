@@ -1,7 +1,6 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import { name, description } from '../../config/projectConfig';
 import Content from '../content/Content';
@@ -19,8 +18,6 @@ const Home = () => {
         <meta property="twitter:title" content={name} />
         <meta property="twitter:description" content={description} />
       </Helmet>
-      <Typography variant="h5"><FormattedMessage id="message" /></Typography>
-      <Typography><FormattedMessage id="message.body" /></Typography>
       <Content />
     </>
   );

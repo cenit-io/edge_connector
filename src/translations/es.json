@@ -1,6 +1,5 @@
 {
   "home": "Inicio",
-  "project.comment": "Comentario del proyecto",
   "switch.language": "Cambiar idioma a {language}",
   "switch.theme": "Cambiar tema a {theme}",
   "light": "claro",
@@ -9,8 +8,6 @@
   "spanish": "Español",
   "example": "Ejemplo",
   "item": "Elemento",
-  "message": "Esto es solo un mensaje.",
-  "message.body": "Esto es solo el cuerpo de un mensaje.",
   "manage.user.options": "Opciones del usuario",
   "page.not.found": "Página no encontrada",
   "page.not.found.error": "Error 404: La URL solicitada no se encuentra o no está disponible",

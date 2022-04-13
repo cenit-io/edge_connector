@@ -22,8 +22,12 @@ const ManageUserOptions = ({ open, handleClose }) => (
   </Drawer>
 );
 
+ManageUserOptions.defaultProps = {
+  open: false
+};
+
 ManageUserOptions.propTypes = {
-  open: PropTypes.bool.isRequired,
+  open: PropTypes.bool,
   handleClose: PropTypes.func.isRequired
 };
 

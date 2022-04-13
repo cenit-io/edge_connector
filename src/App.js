@@ -41,10 +41,6 @@ function App() {
     setMainConfig({ ...mainConfig, wideDevice: matches });
   }, [matches]);
 
-  if (!messages) {
-    return "Loading...";
-  }
-
   return (
     <ThemeProvider theme={mainTheme}>
       <GlobalContext.Provider value={{

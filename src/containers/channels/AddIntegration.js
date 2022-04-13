@@ -10,6 +10,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import Dialog from '../../components/common/Dialog';
 
+// eslint-disable-next-line react/prop-types
 const AddIntegration = ({ data, loadingOnSubmit, handleAccept, handleClose }) => {
   const intl = useIntl();
   const [name, setName] = useState('');

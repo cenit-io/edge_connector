@@ -117,7 +117,7 @@ const UserMenu = () => {
                 <LogoutIcon />
               </ListItemIcon>
               <ListItemText>
-                <FormattedMessage id="components.layout.header.userMenu.logout" />
+                <FormattedMessage id="components.layout.header.userMenu.logout" defaultMessage="Logout" />
               </ListItemText>
             </MenuItem>
           ) : (
@@ -126,7 +126,7 @@ const UserMenu = () => {
                 <LoginIcon />
               </ListItemIcon>
               <ListItemText>
-                <FormattedMessage id="components.layout.header.userMenu.login" />
+                <FormattedMessage id="components.layout.header.userMenu.login" defaultMessage="Login" />
               </ListItemText>
             </MenuItem>
           )}
