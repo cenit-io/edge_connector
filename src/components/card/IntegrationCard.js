@@ -10,9 +10,13 @@ import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
+import CardHeader from '@mui/material/CardHeader';
 import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -22,7 +26,23 @@ Title.propTypes = {
   name: PropTypes.string.isRequired
 };
 
-function IntegrationCard({ itemData, type, onDispatchAction }) {
+function IntegrationCard({ itemData, type, options, onDispatchAction }) {
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleOpenOptions = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleOptionClick = (action) => {
+    handleClose();
+    onDispatchAction({ action, value: itemData });
+  };
+
 
   const handleDispatchAction = (action) => {
     if (onDispatchAction) onDispatchAction({ action, value: itemData });
@@ -85,7 +105,6 @@ function IntegrationCard({ itemData, type, onDispatchAction }) {
   );
 
   const renderContent = () => {
-  
     switch (type) {
       case 'channel':
         return renderChannelContent();
@@ -100,6 +119,41 @@ function IntegrationCard({ itemData, type, onDispatchAction }) {
 
   return (
     <Card sx={{ minWidth: 200 }}>
+      {type === 'connected' ? (
+
+        <CardHeader
+          sx={{ paddingBottom: 0 }}
+          action={
+            <IconButton
+              sx={{ padding: 0 }}
+              aria-label="settings"
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleOpenOptions}
+            >
+              <MoreVertIcon />
+            </IconButton>
+          }
+        />
+      ) : null}
+
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button'
+        }}
+      >
+        {options?.map(({ name: nm, value, disabled }) => (
+          <MenuItem key={value} disabled={disabled} onClick={() => handleOptionClick(value)}>
+            {nm}
+          </MenuItem>
+        ))}
+      </Menu>
+
       <CardMedia
         sx={{ objectFit: 'contain', height: 60, backgroundSize: 'contain', backgroundPosition: 'left', width: 'auto', marginLeft: '24px', marginRight: '8px', marginTop: '10%' }}
         component="div"
@@ -126,11 +180,13 @@ IntegrationCard.propTypes = {
     status: PropTypes.string
   }),
   type: PropTypes.oneOf(['channel', 'connected', 'available']),
+  options: PropTypes.array,
   onDispatchAction: PropTypes.func
 };
 
 IntegrationCard.defaultProps = {
   type: 'connected',
+  options: [],
   onDispatchAction: () => {}
 };
 
