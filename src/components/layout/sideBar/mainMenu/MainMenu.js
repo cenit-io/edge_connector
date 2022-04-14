@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
@@ -127,4 +126,4 @@ MainMenu.propTypes = {
   dense: PropTypes.bool
 };
 
-export default React.memo(MainMenu, (current, next) => current.dense === next.dense);
+export default MainMenu;

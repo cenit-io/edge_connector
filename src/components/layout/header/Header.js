@@ -10,15 +10,13 @@ import Toolbar from '@mui/material/Toolbar';
 import UserMenu from './userMenu/UserMenu';
 import { drawerWidth } from '../../../config/config';
 
-const Header = ({
-  isWideDevice, handleDrawerToggle, openDrawer
-}) => (
+const Header = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
   <AppBar position="fixed" sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}>
     <Toolbar>
       {isWideDevice && openDrawer && (
         <Box sx={{ width: theme => `calc(${drawerWidth}px - ${theme.spacing(4)})`, display: 'flex' }}>
           <Box
-            component="img" alt="EBANUX" src="/icons/ebanux.svg"
+            component="img" alt="EBANUX" src="/icons/ebanux_white.svg"
             sx={{ width: '100px' }}
           />
         </Box>

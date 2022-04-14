@@ -1,43 +1,76 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 
 import IntegrationCard from '../../components/card/IntegrationCard';
 import Loading from '../../components/loading/Loading';
 import CustomizedSnackbar from '../../components/alert/CustomizedSnackbar';
 
-import { getChannels } from '../../api/integrations';
-import AddChannel from './AddChannel';
+import { authorize, createIntegration, getChannels } from '../../api/integrations';
+import AddIntegration from './AddIntegration';
 import PageHeader from '../../components/common/PageHeader';
 
 function Channels() {
   const intl = useIntl();
+  const navigate = useNavigate();
 
   const title = intl.formatMessage({ id: 'title.channels' });
-  const [message, setMessage] = useState(null);
-  const [addChannel, setAddChannel] = useState(null);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: ''
+  });
+  const [channel, setChannel] = useState(null);
+  const [loadingState, setLoadingState] = useState(false);
   const { isLoading, error, data } = useQuery('channels', async () => getChannels());
 
   useEffect(() => {
     if (error) {
-      setMessage({ message: `Error: ${error.message}` });
+      setAlert({
+        open: true,
+        message: `Error: ${error.message}`
+      });
     }
   }, [error]);
 
   const action = useCallback(payload => {
-    setAddChannel(payload.value);
+    setChannel(payload.value);
   }, []);
 
   const handleCloseMessage = useCallback(() => {
-    setMessage(null);
+    setAlert({
+      open: false,
+      message: ''
+    });
   }, []);
 
-  const handleAccept = useCallback(payload => {
-    console.log(payload);
-    handleCloseMessage();
-  }, []);
+  const handleAccept = useMutation(({ name }) => createIntegration({ name, channel: channel.name }), {
+    onMutate: () => {
+      setLoadingState(true);
+    },
+    onSuccess: (res, params) => {
+      setAlert({
+        open: true,
+        message: 'Integration created successfuly',
+        severity: 'success'
+      })
+      if (params.authorized) {
+        authorize(res.data.id)
+      } else navigate('/integrations/connected-integrations');
+    },
+    onError: (err) => {
+      setAlert({
+        open: true,
+        message: err.message,
+        autoHideDuration: null
+      });
+    },
+    onSettled: () => {
+      setLoadingState(false)
+    }
+  });
 
   return (
     <>
@@ -46,7 +79,7 @@ function Channels() {
       {data && (
         <Grid container spacing={2}>
           {data.data.map(x => (
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid key={x.name} item xs={12} sm={6} md={3}>
               <IntegrationCard itemData={x} type="channel" onDispatchAction={action} />
             </Grid>
           ))}
@@ -57,14 +90,13 @@ function Channels() {
           <FormattedMessage id={isLoading ? "common.please.wait" : "common.no.data"} />
         </Typography>
       )}
-      {message && (
-        <CustomizedSnackbar message={message.message} open onClose={handleCloseMessage} />
-      )}
-      {addChannel && (
-        <AddChannel
-          handleAccept={handleAccept}
-          handleClose={() => { setAddChannel(null); }}
-          data={addChannel}
+      <CustomizedSnackbar message={alert.message} open={alert.open} autoHideDuration={alert.autoHideDuration} severity={alert.severity} onClose={handleCloseMessage} />
+      {channel && (
+        <AddIntegration
+          handleAccept={handleAccept.mutate}
+          handleClose={() => { setChannel(null); }}
+          data={channel}
+          loadingOnSubmit={loadingState}
         />
       )}
     </>

@@ -1,3 +1,4 @@
+import React from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import TranslateIcon from '@mui/icons-material/Translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
@@ -44,7 +45,7 @@ const getMenuData = intl => [
         label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.connectedIntegrations' }),
         icon: <CableIcon />,
         link: '/integrations/connected-integrations'
-      },
+      }
     ]
   },
   {

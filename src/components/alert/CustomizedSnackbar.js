@@ -16,7 +16,7 @@ export default function CustomizedSnackbar({ open, severity, message, autoHideDu
   return (
     <Portal>
       <Stack spacing={2} sx={{ width: '100%' }}>
-        <Snackbar open={open} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} autoHideDuration={autoHideDuration} onClose={onClose}>
+        <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} autoHideDuration={autoHideDuration} onClose={onClose}>
           <Alert onClose={onClose} severity={severity} sx={{ width: '100%' }}>
             {message}
           </Alert>
@@ -24,7 +24,7 @@ export default function CustomizedSnackbar({ open, severity, message, autoHideDu
       </Stack>
     </Portal>
   );
-};
+}
 
 CustomizedSnackbar.propTypes = {
   open: PropTypes.bool.isRequired,
