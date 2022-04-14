@@ -8,13 +8,16 @@ import IntegrationCard from '../../components/card/IntegrationCard';
 import Loading from '../../components/loading/Loading';
 import CustomizedSnackbar from '../../components/alert/CustomizedSnackbar';
 import PageHeader from '../../components/common/PageHeader';
-import { authorize, getConnectedIntegrations, unauthorize } from '../../api/integrations';
+import { authorize, getConnectedIntegrations, unauthorize, importResource } from '../../api/integrations';
+import TaskWatcher from '../../components/tasks/TaskWatcher';
 import { getIntegrationCardOptions } from './helpers';
 
 function ConnectedIntegrations() {
   const intl = useIntl();
   const title = intl.formatMessage({ id: 'title.connected.integrations' });
   const queryClient = useQueryClient();
+
+  const [backgroundTasks, setBackgroundTasks] = React.useState([]);
 
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({
@@ -64,6 +67,27 @@ function ConnectedIntegrations() {
     }
   });
 
+  const handleImportResource = useMutation(importResource, {
+    onMutate: () => {
+      setLoading(true);
+    },
+    onSuccess: (res) => {
+      setBackgroundTasks([...backgroundTasks, res.data]);
+    },
+    onError: (err) => {
+      setAlert({
+        open: true,
+        message: err.message,
+        autoHideDuration: null
+      });
+    },
+    onSettled: () => {
+      setLoading(false);
+    }
+  });
+
+  const handleDeleteClick = () => window.alert("Ops! Delete action is not available yet.");
+
   const action = useCallback(({ action, value }) => {
     switch (action) {
       case 'authorize':
@@ -72,10 +96,48 @@ function ConnectedIntegrations() {
       case 'unauthorize':
         handleUnauthorize.mutate(value.id);
         break;
+      case 'import brands':
+        handleImportResource.mutate({ id: value.id, resource: 'brands' });
+        break;
+      case 'import categories':
+        handleImportResource.mutate({ id: value.id, resource: 'categories' });
+        break;
+      case 'import orders':
+        handleImportResource.mutate({ id: value.id, resource: 'orders' });
+        break;
+      case 'import products':
+        handleImportResource.mutate({ id: value.id, resource: 'products' });
+        break;
+      case 'import logistics':
+        handleImportResource({ id: value.id, resource: 'logistics' });
+        break;
+      case 'import stock locations':
+        handleImportResource({ id: value.id, resource: 'stock/locations' });
+        break;
+      case 'delete':
+        handleDeleteClick();
+        break;
       default:
         break;
     }
   });
+
+  const handleOnCheckTask = (d) => {
+    if (d) {
+      const currentTasks = [...backgroundTasks];
+      const found = currentTasks.findIndex(t => t.id === d.id);
+      if (found !== -1) {
+        currentTasks[found] = d;
+        setBackgroundTasks(currentTasks);
+      }
+      queryClient.invalidateQueries('tasks')
+    }
+  };
+
+  const handleOnCloseTask = (id) => {
+    const filter = backgroundTasks.filter(t => t.id !== id);
+    setBackgroundTasks(filter)
+  };
 
   return (
     <>
@@ -96,6 +158,7 @@ function ConnectedIntegrations() {
         </Typography>
       )}
       <CustomizedSnackbar message={alert.message} open={alert.open} autoHideDuration={alert.autoHideDuration} severity={alert.severity} onClose={handleCloseMessage} />
+      <TaskWatcher onCheckStatus={handleOnCheckTask} onClose={handleOnCloseTask} tasks={backgroundTasks} />
     </>
   );
 }

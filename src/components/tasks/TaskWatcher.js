@@ -5,7 +5,7 @@ import IconButton from '@mui/material/Tooltip';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import CloseIcon from '@mui/icons-material/Close';
 import Stack from '@mui/material/Stack';
-import Snackbar from '@mui/material/Snackbar';
+import SnackbarContent from '@mui/material/SnackbarContent';
 
 import { getTask } from '../../api/tasks';
 import CustomizedSnackbar from '../alert/CustomizedSnackbar';
@@ -13,10 +13,12 @@ import CustomizedSnackbar from '../alert/CustomizedSnackbar';
 const TaskWatcher = ({ tasks, onCheckStatus, onClose }) => {
 
   const [isChecking, setIschecking] = React.useState(false);
+  const [selected, setSelected] = React.useState();
   const [error, setError] = React.useState('');
 
   const handleCheck = async (id) => {
     setIschecking(true);
+    setSelected(id);
     try {
       const { data } = await getTask(id);
       if (data) onCheckStatus(data)
@@ -24,11 +26,14 @@ const TaskWatcher = ({ tasks, onCheckStatus, onClose }) => {
       setError(error);
     }
     setIschecking(false);
+    setSelected(null);
   }
 
   const getActions = (t) => (
     <>
-      {!isChecking ? (
+      {isChecking && selected === t.id ? (
+        '...'
+      ) : (
         <Tooltip title="Check status">
           <IconButton
             aria-label="retry"
@@ -40,7 +45,7 @@ const TaskWatcher = ({ tasks, onCheckStatus, onClose }) => {
             <AutorenewIcon />
           </IconButton>
         </Tooltip>
-      ) : '...'}
+      )}
       <Tooltip title="Close">
         <IconButton
           aria-label="close"
@@ -57,14 +62,9 @@ const TaskWatcher = ({ tasks, onCheckStatus, onClose }) => {
 
   return (
     <>
-      <Stack spacing={2} sx={{ maxWidth: 700 }}>
+      <Stack spacing={2} sx={{ maxWidth: 700, padding: '5px', position: 'fixed', bottom: 0, right: 1 }}>
         {tasks.map((t) =>
-          <Snackbar
-            key={t.id}
-            open
-            message={`${t.status?.toUpperCase()}: ${t.description}`}
-            action={getActions(t)}
-          />
+          <SnackbarContent message={`${t.status?.toUpperCase()}: ${t.description}`} action={getActions(t)} />
         )}
       </Stack>
       <CustomizedSnackbar
