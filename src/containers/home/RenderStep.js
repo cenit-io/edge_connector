@@ -26,7 +26,7 @@ const RenderStep = ({
             '& .MuiAlert-message': { m: 'auto' }
           }}>
             <Typography sx={{ textTransform: 'uppercase' }} variant="caption">
-              <FormattedMessage id="home.step" />
+              <FormattedMessage defaultMessage="Step" id="home.step" />
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
               {index + 1}
@@ -65,7 +65,7 @@ const RenderStep = ({
             }}
           />
           <Box sx={{ width: '100%', '@media (max-width: 600px)': { mt: '10px' } }}>
-            <Typography sx={{ fontWeight: 'bold' }}><FormattedMessage id="home.what.is.next" /></Typography>
+            <Typography sx={{ fontWeight: 'bold' }}><FormattedMessage defaultMessage="What's next?" id="home.what.is.next" /></Typography>
             <Typography>{next}</Typography>
           </Box>
         </Box>

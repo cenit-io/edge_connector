@@ -23,7 +23,7 @@ function App() {
   const [mainConfig, setMainConfig] = useState(config);
   const [messages, setMessages] = useState(null);
 
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery('(min-width:600px)', { noSsr: true });
   const { locale, theme } = mainConfig;
 
   const mainTheme = createTheme(getTheme(theme));
@@ -40,10 +40,6 @@ function App() {
   useEffect(() => {
     setMainConfig({ ...mainConfig, wideDevice: matches });
   }, [matches]);
-
-  if (!messages) {
-    return "Loading...";
-  }
 
   return (
     <ThemeProvider theme={mainTheme}>
