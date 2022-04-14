@@ -41,8 +41,4 @@ Header.propTypes = {
   isWideDevice: PropTypes.bool.isRequired
 };
 
-const notRenderIf = (current, next) => (
-  current.openDrawer === next.openDrawer && current.isWideDevice === next.isWideDevice
-);
-
-export default React.memo(Header, notRenderIf);
+export default Header;

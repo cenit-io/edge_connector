@@ -108,7 +108,7 @@ const UserMenu = () => {
               <ManageAccountsIcon />
             </ListItemIcon>
             <ListItemText>
-              <FormattedMessage id="manage.user.options" />
+              <FormattedMessage id="manage.user.options" defaultMessage="User options" />
             </ListItemText>
           </MenuItem>
           {auth.authInfo ? (
