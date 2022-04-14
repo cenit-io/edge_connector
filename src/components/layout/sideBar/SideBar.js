@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 
-import MainMenu from './mainMenu/MainMenu';
-import MainMenuFooter from './mainMenuFooter/MainMenuFooter';
 import { drawerWidth, headerHeight } from '../../../config/config';
+
+const MainMenu = React.lazy(() => import('./mainMenu/MainMenu'));
+const MainMenuFooter = React.lazy(() => import('./mainMenuFooter/MainMenuFooter'));
 
 
 const SideBar = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
@@ -29,8 +30,10 @@ const SideBar = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
       flexDirection: 'column',
       minHeight: `calc(100vh - ${headerHeight}px)`
     }}>
-      <MainMenu dense={isWideDevice} />
-      <MainMenuFooter />
+      <Suspense fallback={'Loading...'}>
+        <MainMenu dense={isWideDevice} />
+        <MainMenuFooter />
+      </Suspense>
     </Box>
   </Drawer>
 );

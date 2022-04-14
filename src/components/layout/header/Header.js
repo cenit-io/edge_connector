@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import IconButton from '@mui/material/IconButton';
@@ -7,8 +7,9 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 
-import UserMenu from './userMenu/UserMenu';
 import { drawerWidth } from '../../../config/config';
+
+const UserMenu = React.lazy(() => import('./userMenu/UserMenu'));
 
 const Header = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
   <AppBar position="fixed" sx={{ zIndex: theme => theme.zIndex.drawer + 1 }}>
@@ -30,7 +31,9 @@ const Header = ({ isWideDevice, handleDrawerToggle, openDrawer }) => (
       >
         {openDrawer ? <ChevronLeftIcon /> : <ChevronRightIcon />}
       </IconButton>
-      <UserMenu />
+      <Suspense fallback={'Loading...'}>
+        <UserMenu />
+      </Suspense>
     </Toolbar>
   </AppBar>
 );
