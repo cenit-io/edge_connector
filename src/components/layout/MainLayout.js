@@ -7,7 +7,7 @@ import Paper from '@mui/material/Paper';
 
 import { drawerWidth } from '../../config/config';
 import GlobalContext from '../../config/GlobalContext';
-// import SideBar from './sideBar/SideBar';
+import SideBar from './sideBar/SideBar';
 import Header from './header/Header';
 
 const MainLayout = ({ children }) => {
@@ -31,7 +31,7 @@ const MainLayout = ({ children }) => {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <Header handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} isWideDevice={isWideDevice} />
-      {/* <SideBar handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} isWideDevice={isWideDevice} /> */}
+      <SideBar handleDrawerToggle={handleDrawerToggle} openDrawer={openDrawer} isWideDevice={isWideDevice} />
       <Box
         component="main"
         sx={isWideDevice ? {
