@@ -6,6 +6,8 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
+import { alpha } from '@mui/material/styles';
+import { blueGrey } from '@mui/material/colors';
 
 import { genId } from '../../utils/generalFunctions';
 
@@ -46,7 +48,8 @@ const MyTableRow = ({
         sx={{
           position: 'absolute',
           marginTop: `-${height}px`,
-          width: '100%'
+          cursor: handPointer ? 'pointer' : 'default',
+          right: 0
         }}>
         <TableCell
           colSpan="100%"
@@ -55,7 +58,8 @@ const MyTableRow = ({
             border: 'none',
             display: 'block',
             textAlign: 'end',
-            padding: 'unset'
+            padding: 'unset',
+            backgroundColor: alpha(blueGrey['A100'], 0.55)
           }}
         >
           {options.map(x => (
@@ -80,7 +84,7 @@ const MyTableRow = ({
         ref={rowRef}
         onMouseEnter={handleShow}
         onMouseLeave={handleHide}
-        style={handPointer && { cursor: 'pointer' }}
+        style={{ cursor: handPointer ? 'pointer' : 'default' }}
         {...others}
       >
         {children}

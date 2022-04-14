@@ -10,13 +10,13 @@ import TaskIcon from '@mui/icons-material/Task';
 const getMenuData = intl => [
   {
     key: '/',
-    label: intl.formatMessage({ id: 'home' }),
+    label: intl.formatMessage({ defaultMessage: 'Home', id: 'home' }),
     icon: <HomeIcon />,
     link: '/'
   },
   {
     key: '/example',
-    label: intl.formatMessage({ id: 'example' }),
+    label: intl.formatMessage({ defaultMessage: 'Example', id: 'example' }),
     icon: <TranslateIcon />,
     link: '/example'
   },
@@ -25,24 +25,24 @@ const getMenuData = intl => [
   },
   {
     key: '/integrations',
-    label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.integrations' }),
+    label: intl.formatMessage({ defaultMessage: 'Integrations', id: 'components.layout.sidebar.mainMenu.integrations' }),
     icon: <AccountTreeIcon />,
     children: [
       {
         key: '/integrations/available-integrations',
-        label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.availableIntegrations' }),
+        label: intl.formatMessage({ defaultMessage: 'Available Integrations', id: 'components.layout.sidebar.mainMenu.availableIntegrations' }),
         icon: <AutoAwesomeMosaicIcon />,
         link: '/integrations/available-integrations'
       },
       {
         key: '/integrations/channels',
-        label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.channels' }),
+        label: intl.formatMessage({ defaultMessage: 'Channels', id: 'title.channels' }),
         icon: <MultipleStopIcon />,
         link: '/integrations/channels'
       },
       {
         key: '/integrations/connected-integrations',
-        label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.connectedIntegrations' }),
+        label: intl.formatMessage({ defaultMessage: 'Connected Integrations', id: 'components.layout.sidebar.mainMenu.connectedIntegrations' }),
         icon: <CableIcon />,
         link: '/integrations/connected-integrations'
       }
@@ -50,7 +50,7 @@ const getMenuData = intl => [
   },
   {
     key: '/tasks',
-    label: intl.formatMessage({ id: 'components.layout.sidebar.mainMenu.tasks' }),
+    label: intl.formatMessage({ defaultMessage: 'Tasks', id: 'title.tasks' }),
     icon: <TaskIcon />,
     link: '/tasks'
   }
