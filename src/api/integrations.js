@@ -87,3 +87,13 @@ export const unauthorize = async (id) => {
   }
 }
 
+export const importResource = async (params) => {
+  const { id, resource } = params;
+  try {
+    const response = await API.get(`/integrations/${id}/${resource}/import`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error importing resource from integration')
+  }
+}
+
