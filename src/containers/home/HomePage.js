@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { FormattedMessage } from 'react-intl';
-import RenderStep from './RenderStep';
 
 import { useNavigate } from 'react-router-dom';
+
+const RenderStep = React.lazy(() => import('./RenderStep'));
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -45,13 +46,15 @@ const HomePage = () => {
         <Typography variant="h6"><FormattedMessage id="home.salut" /></Typography>
       </Box>
       {steps.map((stepItem, index) => (
-        <RenderStep
-          btn={stepItem.btn}
-          action={action}
-          next={stepItem.next}
-          message={stepItem.message}
-          index={index}
-        />
+        <Suspense>
+          <RenderStep
+            btn={stepItem.btn}
+            action={action}
+            next={stepItem.next}
+            message={stepItem.message}
+            index={index}
+          />
+        </Suspense>
       ))}
     </>
   )

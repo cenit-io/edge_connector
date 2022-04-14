@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, Suspense } from 'react';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
@@ -19,7 +19,8 @@ import { FormattedMessage } from 'react-intl';
 import GlobalContext from '../../../../config/GlobalContext';
 import { themes } from '../../../../config/config';
 import { useAuth } from '../../../../utils/auth';
-import ManageUserOptions from './ManageUserOptions';
+
+const ManageUserOptions = React.lazy(() => import('./ManageUserOptions'));
 
 const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -55,7 +56,7 @@ const UserMenu = () => {
 
   return (
     <Box sx={{ position: 'absolute', right: '10px', display: 'flex', alignItems: 'center' }}>
-      <Typography sx={{display: { md: 'block', xs: 'none' } }}>{auth.authInfo?.name}</Typography>
+      <Typography sx={{ display: { md: 'block', xs: 'none' } }}>{auth.authInfo?.name}</Typography>
       <IconButton
         size="large"
         aria-label="account of current user"
@@ -132,7 +133,9 @@ const UserMenu = () => {
           )}
         </Menu>
       )}
-      <ManageUserOptions open={showUserOptions} handleClose={handleUserOptions} />
+      <Suspense fallback={'Loading...'}>
+        <ManageUserOptions open={showUserOptions} handleClose={handleUserOptions} />
+      </Suspense>
     </Box>
   );
 };
