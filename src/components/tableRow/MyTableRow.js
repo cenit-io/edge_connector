@@ -54,10 +54,7 @@ const MyTableRow = ({
         <TableCell
           colSpan="100%"
           sx={{
-            width: '100%',
             border: 'none',
-            display: 'block',
-            textAlign: 'end',
             padding: 'unset',
             backgroundColor: alpha(blueGrey['A100'], 0.55)
           }}
